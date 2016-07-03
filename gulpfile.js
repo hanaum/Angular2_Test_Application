@@ -13,10 +13,6 @@ const srcsToFmt = ['src/**/*.ts'];
 // The development server (the recommended option for development)
 gulp.task('default', ['webpack-dev-server']);
 
-gulp.task('watch-dev', ['compile-dev'], function() {
-  gulp.watch(['src/**/*'], ['compile-dev']);
-});
-
 gulp.task('clean', function() {
   const del = require('del');
   return del('dist/**/*');
