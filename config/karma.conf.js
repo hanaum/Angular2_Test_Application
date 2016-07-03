@@ -5,7 +5,7 @@ module.exports = function(config) {
     basePath: '',
     frameworks: ['jasmine'],
     files: [{pattern: './config/karma-test-shim.js', watched: false}],
-    preprocessors: {'./config/karma-test-shim.js': ['webpack', 'sourcemap']},
+    preprocessors: {'./config/karma-test-shim.js': ['webpackStream', 'sourcemap']},
     webpack: webpackConfig,
     webpackMiddleware: {stats: 'errors-only'},
     webpackServer: {noInfo: true},

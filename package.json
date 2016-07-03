@@ -29,6 +29,7 @@
     "gulp": "^3.9.1",
     "gulp-clang-format": "^1.0.23",
     "gulp-tslint": "^5.0.0",
+    "gulp-util": "^3.0.7",
     "html-loader": "^0.4.3",
     "html-webpack-plugin": "^2.15.0",
     "jasmine-core": "^2.4.1",
