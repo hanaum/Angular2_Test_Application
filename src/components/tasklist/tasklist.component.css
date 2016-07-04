@@ -1,0 +1,27 @@
+.content-title {
+  display: inline-block;
+}
+
+.list-header h1 {
+  font-weight: 800;
+}
+
+.add-new-btn {
+  cursor: pointer;
+  margin-left: 50px;
+  color: white;
+  background-color: transparent;
+  border: 2px solid white;
+  border-radius: 10%;
+  height: 30px;
+  font-size: 22px;
+  padding: 2px 6px 4px 6px;
+  -webkit-transition-property: color; /* Safari */
+  -webkit-transition-duration: .3s; /* Safari */
+  transition-property: color;
+  transition-duration: .3s;
+}
+
+.add-new-btn:hover {
+  color: #80ff80;
+}
