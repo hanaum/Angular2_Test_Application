@@ -19,7 +19,11 @@
         <tr *ngFor="let task of tasks">
           <th>{{task.name}}</th>
           <th>{{task.priority}}</th>
-          <th><input type="checkbox"></th>
+          <th>
+            <div class="checkbox">
+              <input type="checkbox" name="check" value="check1">
+            </div>
+          </th>
         </tr>
       </tbody>
     </table>
