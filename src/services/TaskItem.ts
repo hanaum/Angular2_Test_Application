@@ -1,3 +1,3 @@
-/**
- * Created by hanaum on 7/3/16.
- */
+export class TaskItem {
+  constructor(public id: number, public name: string, public priority: number) {}
+}

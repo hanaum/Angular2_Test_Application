@@ -16,25 +16,10 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <th>hanatown</th>
-          <th>++++++</th>
-          <th>-</th>
-        </tr>
-        <tr>
-          <th>hanatown</th>
-          <th>++++++</th>
-          <th>-</th>
-        </tr>
-        <tr>
-          <th>hanatown</th>
-          <th>++++++</th>
-          <th>-</th>
-        </tr>
-        <tr>
-          <th>hanatown</th>
-          <th>++++++</th>
-          <th>-</th>
+        <tr *ngFor="let task of tasks">
+          <th>{{task.name}}</th>
+          <th>{{task.priority}}</th>
+          <th><input type="checkbox"></th>
         </tr>
       </tbody>
     </table>

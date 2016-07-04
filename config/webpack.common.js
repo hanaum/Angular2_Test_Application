@@ -22,11 +22,11 @@ module.exports = {
         loader: 'file?name=assets/[name].[hash].[ext]'},
       {
         test: /\.css$/,
-        exclude: helpers.root('src', 'components'),
+        exclude: [helpers.root('src', 'components'), helpers.root('src', 'services')],
         loader: ExtractTextPlugin.extract('style', 'css?sourceMap')},
       {
         test: /\.css$/,
-        include: helpers.root('src', 'components'),
+        include: [helpers.root('src', 'components'), helpers.root('src', 'services')],
         loader: 'raw'}
     ]
   },
