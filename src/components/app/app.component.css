@@ -5,7 +5,11 @@ nav {
 hr {
   border-top: 1px solid black;
   border-bottom: 1px solid black;
-  margin: 0 40px;
+  margin: 0 2.5em;
+}
+
+.container {
+  margin-top: 1.875em;
 }
 
 .logo {
@@ -35,8 +39,8 @@ hr {
 
 .btn-nav {
   cursor: pointer;
-  padding: 2px 30px;
-  margin-left: 40px;
+  padding: 2px 1.875;
+  margin-left: 2.5em;
   background-color: transparent;
   color: white;
   border: 2px solid white;
