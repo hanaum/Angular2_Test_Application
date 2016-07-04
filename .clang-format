@@ -1,3 +1,7 @@
 Language: JavaScript
 BasedOnStyle: Google
 ColumnLimit: 100
+
+AllowShortFunctionsOnASingleLine: All
+BinPackArguments: false
+BinPackParameters: false
