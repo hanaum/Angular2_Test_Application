@@ -7,7 +7,7 @@ import {TasklistComponent} from '../tasklist/tasklist.component';
   selector: 'my-app',
   template: require('./app.component.html'),
   styles: [require('./app.component.css')],
-  directives: [[TasklistComponent]]
+  directives: [<any>TasklistComponent]
 })
 
 export class AppComponent {
