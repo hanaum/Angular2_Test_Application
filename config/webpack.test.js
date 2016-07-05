@@ -1,3 +1,5 @@
+const helpers = require('./helpers');
+
 module.exports = {
   devtool: 'inline-source-map',
   resolve: {extensions: ['', '.ts', '.js']},
@@ -14,7 +16,12 @@ module.exports = {
         loader: 'null'},
       {
         test: /\.css$/,
-        loader: 'null'}
+        exclude: [helpers.root('src', 'components'), helpers.root('src', 'services')],
+        loader: 'null'},
+      {
+        test: /\.css$/,
+        include: [helpers.root('src', 'components'), helpers.root('src', 'services')],
+        loader: 'raw'}
     ]
   }
 }

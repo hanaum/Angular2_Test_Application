@@ -1,12 +1,7 @@
-import {Component} from '@angular/core';
-import {TaskItem} from '../../services/TaskItem';
+import {Component, OnInit} from '@angular/core';
 
-const TASKS: TaskItem[] = [
-  new TaskItem(11, 'Mr.Hana', 5),
-  new TaskItem(12, 'Mr.Pudding', 5),
-  new TaskItem(13, 'Mr.Hyungtae', 5),
-  new TaskItem(14, 'Mr.Erywa', 5)
-];
+import {TaskItem} from '../../services/taskItem';
+import {TaskListService} from '../../services/taskList.service';
 
 @Component({
   selector: 'task-list',
@@ -14,6 +9,14 @@ const TASKS: TaskItem[] = [
   styles: [require('./taskList.component.css')],
 })
 
-export class TaskListComponent {
-  tasks = TASKS;
+export class TaskListComponent implements OnInit {
+  tasks: TaskItem[];
+
+  constructor(private taskListService: TaskListService) {}
+
+  ngOnInit() { this.getTaskList(); }
+
+  getTaskList(): Promise<any> {
+    return this.taskListService.getTaskList().then(tasks => this.tasks = tasks);
+  }
 }
