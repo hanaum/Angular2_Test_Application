@@ -1,7 +1,7 @@
 import {TaskItem} from './taskItem';
 
 /**
- * Mock data for TaskItem.
+ * Mock data containing TaskItems.
  * @type {TaskItem[]}
  */
 export const TASKS: TaskItem[] = [

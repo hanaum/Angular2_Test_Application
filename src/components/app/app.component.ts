@@ -13,7 +13,7 @@ import {TaskListComponent} from '../taskList/taskList.component';
 })
 
 /**
- * AppComponent serves as main component that holds base directives.
+ * AppComponent serves as main component that holds base components.
  */
 export class AppComponent {
 }

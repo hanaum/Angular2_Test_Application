@@ -10,7 +10,7 @@ import {TaskListService} from '../../services/taskList.service';
 })
 
 /**
- * TaskListComponent updates the list table with TaskItem(s).
+ * TaskListComponent renders the table containing a list of TaskItems.
  */
 export class TaskListComponent implements OnInit {
   tasks: TaskItem[];
@@ -20,10 +20,9 @@ export class TaskListComponent implements OnInit {
   ngOnInit() { this.getTaskList(); }
 
   /**
-   * GetTaskList calls taskListService to grab tasks and store them in an array
-   * @returns {Promise<TResult>|Promise<U>} array of TaskItems.
+   * GetTaskList calls taskListService to grab tasks and store them in an array.
    */
-  getTaskList(): Promise<any> {
-    return this.taskListService.getTaskList().then(tasks => this.tasks = tasks);
+  getTaskList() {
+    this.taskListService.getTaskList().then(tasks => this.tasks = tasks);
   }
 }

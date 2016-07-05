@@ -4,7 +4,7 @@ import {TASKS} from './mock-taskList';
 import {TaskItem} from './taskItem';
 
 /**
- * Service handles TaskItem data.
+ * Service providing TaskItems.
  */
 @Injectable()
 export class TaskListService {

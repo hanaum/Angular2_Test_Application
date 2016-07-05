@@ -7,7 +7,7 @@ import {Component} from '@angular/core';
 })
 
 /**
- * NavbarComponent updates the navbar.
+ * NavbarComponent renders the navbar.
  */
 export class NavbarComponent {
 }
