@@ -1,0 +1,31 @@
+<div class="content-title">
+  <div class="list-header">
+    <h1 class="display-inline">Your Travel Wish List</h1>
+    <button class="add-new-btn display-inline">
+      <i class="fa fa-plus" aria-hidden="true"></i>
+    </button>
+  </div>
+  <hr>
+  <div>
+    <table>
+      <thead>
+        <tr>
+          <th>Location</th>
+          <th>Priority</th>
+          <th>Visited</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let task of tasks">
+          <th>{{task.name}}</th>
+          <th>{{task.priority}}</th>
+          <th>
+            <div class="checkbox">
+              <input type="checkbox" name="check" value="check1">
+            </div>
+          </th>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
