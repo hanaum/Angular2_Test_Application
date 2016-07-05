@@ -1,5 +1,9 @@
 import {TaskItem} from './taskItem';
 
+/**
+ * Mock data for TaskItem.
+ * @type {TaskItem[]}
+ */
 export const TASKS: TaskItem[] = [
   new TaskItem(11, 'Mr.Hana', 5),
   new TaskItem(12, 'Mr.Pudding', 5),

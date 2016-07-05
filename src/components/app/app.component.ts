@@ -12,5 +12,8 @@ import {TaskListComponent} from '../taskList/taskList.component';
   directives: [TaskListComponent as any, NavbarComponent as any]
 })
 
+/**
+ * AppComponent serves as main component that holds base directives.
+ */
 export class AppComponent {
 }

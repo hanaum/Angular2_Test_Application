@@ -6,5 +6,8 @@ import {Component} from '@angular/core';
   styles: [require('./navbar.component.css')]
 })
 
+/**
+ * NavbarComponent updates the navbar.
+ */
 export class NavbarComponent {
 }
