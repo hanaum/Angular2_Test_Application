@@ -26,6 +26,10 @@ i.fa-plus {
   bottom: 4px;
 }
 
+.list-actions {
+  text-align: right;
+}
+
 .content-title {
   display: inline-block;
   width: 40%;
