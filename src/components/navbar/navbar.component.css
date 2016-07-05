@@ -13,17 +13,18 @@ nav {
   font-weight: 800;
 }
 
-.logo h1 {
+.logo h1, .logo a {
   font-family: 'Bungee Shade', sans-serif;
   color: black;
-  font-size: 1.875em;
+  font-size: 1.4em;
   margin-bottom: 0;
+  text-decoration: none;
 }
 
 .nav-links {
   display: inline-block;
   position: relative;
-  top: 2.188em;
+  top: 0.875em;
   float: right;
 }
 

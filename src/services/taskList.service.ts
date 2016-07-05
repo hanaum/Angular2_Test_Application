@@ -1,6 +1,5 @@
 import {Injectable} from '@angular/core';
 
-import {TASKS} from './mock-taskList';
 import {TaskItem} from './taskItem';
 
 /**
@@ -8,8 +7,12 @@ import {TaskItem} from './taskItem';
  */
 @Injectable()
 export class TaskListService {
+  private tasks: TaskItem[];
+
+  constructor() { this.tasks = new Array<TaskItem>(0); }
+
   /**
    * @returns {Promise<TaskItem[]>}
    */
-  getTaskList(): Promise<TaskItem[]> { return Promise.resolve(TASKS); }
+  getTaskList(): Promise<TaskItem[]> { return Promise.resolve(this.tasks); }
 }

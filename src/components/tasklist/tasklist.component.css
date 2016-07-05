@@ -21,6 +21,11 @@ th {
   padding: 5px 0;
 }
 
+i.fa-plus {
+  position: relative;
+  bottom: 4px;
+}
+
 .content-title {
   display: inline-block;
   width: 40%;
@@ -29,13 +34,14 @@ th {
 .list-header h1 {
   font-weight: 800;
   margin-bottom: 0;
+  font-size: 30px;
 }
 
 .add-new-btn {
   cursor: pointer;
   float: right;
   position: relative;
-  top: 20px;
+  top: 5px;
   color: white;
   background-color: transparent;
   border: 2px solid white;

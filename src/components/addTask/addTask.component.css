@@ -1,0 +1,49 @@
+.btn-close {
+  -webkit-transition-property: all; /* Safari */
+  -webkit-transition-duration: .3s; /* Safari */
+  transition-property: all;
+  transition-duration: .3s;
+}
+
+.btn-close:hover {
+  color: #ff6666;
+  opacity: 1;
+}
+
+.btn-cancel {
+  background-color: transparent;
+  color: #ff6666;
+  -webkit-transition-property: background-color; /* Safari */
+  -webkit-transition-duration: .3s; /* Safari */
+  transition-property: background-color;
+  transition-duration: .3s;
+}
+
+.btn-cancel:hover {
+  background-color: #ff6666;
+  color: white;
+}
+
+.btn-save {
+  background-color: transparent;
+  color: #00bfff;
+  font-weight: 800;
+  -webkit-transition-property: background-color; /* Safari */
+  -webkit-transition-duration: .3s; /* Safari */
+  transition-property: background-color;
+  transition-duration: .3s;
+}
+
+.btn-save:hover {
+  background-color: #00bfff;
+  color: white;
+}
+
+.modal-header {
+  border-bottom: 2px solid #00bfff;
+}
+
+.modal-footer {
+  border-top: none;
+}
+
