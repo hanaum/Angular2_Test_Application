@@ -31,4 +31,12 @@ export class TaskListComponent implements OnInit {
    * @param task
    */
   addTask(task: TaskItem) { this.tasks.push(task); }
+
+  removeTask(taskId: number) {
+    for (var i = 0; i < this.tasks.length; i++) {
+      if (this.tasks[i].id === taskId) {
+        this.tasks.splice(i, 1);
+      }
+    }
+  }
 }

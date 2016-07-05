@@ -58,3 +58,24 @@ i.fa-plus {
 .add-new-btn:hover {
   color: #248f24;
 }
+
+.btn-visited, .btn-remove {
+  border: 2px solid white;
+  border-radius: 10%;
+  color: white;
+  background-color: transparent;
+  -webkit-transition-property: all; /* Safari */
+  -webkit-transition-duration: .3s; /* Safari */
+  transition-property: all;
+  transition-duration: .3s;
+}
+
+.btn-visited:hover {
+  border: 2px solid #c6ffb3;
+  color: #c6ffb3;
+}
+
+.btn-remove:hover {
+  border: 2px solid #ffb3b3;
+  color: #ffb3b3;
+}

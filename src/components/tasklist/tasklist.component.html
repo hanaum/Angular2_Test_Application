@@ -12,7 +12,7 @@
         <tr>
           <th>Location</th>
           <th>Priority</th>
-          <th>Visited</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -20,8 +20,9 @@
           <th>{{task.name}}</th>
           <th>{{task.priority}}</th>
           <th>
-            <div class="checkbox">
-              <input type="checkbox" name="check" value="check1">
+            <div class="list-actions">
+              <button class="btn-visited">Visited</button>
+              <button (click)="removeTask(task.id)" class="btn-remove">Remove</button>
             </div>
           </th>
         </tr>
