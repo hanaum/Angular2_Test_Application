@@ -17,6 +17,10 @@ export class AuthenticationService {
 
   subscribeToAuth() {
     this.af.auth.subscribe((auth) => {
+      if (auth == null) {
+        // workaround for the bug when login -> logout -> login.
+        auth = this.af.auth.getAuth();
+      }
       this.authState = auth;
       if (this.authState == null) {
         this.loginState.next(-1);
