@@ -3,7 +3,7 @@ import {enableProdMode} from '@angular/core';
 import {disableDeprecatedForms, provideForms} from '@angular/forms';
 import {bootstrap} from '@angular/platform-browser-dynamic';
 import {MODAL_BROWSER_PROVIDERS} from 'angular2-modal/platform-browser';
-import {FIREBASE_PROVIDERS, defaultFirebase} from 'angularfire2';
+import {AuthMethods, AuthProviders, FIREBASE_PROVIDERS, defaultFirebase, firebaseAuthConfig} from 'angularfire2';
 
 import {AppComponent} from './components/app/app.component';
 import {APP_ROUTER_PROVIDERS} from './components/app/app.routes';
@@ -24,6 +24,7 @@ bootstrap(AppComponent as any, [
     databaseURL: 'https://choosetogo-61e03.firebaseio.com',
     storageBucket: 'choosetogo-61e03.appspot.com',
   }),
+  firebaseAuthConfig({provider: AuthProviders.Google, method: AuthMethods.Redirect}),
   disableDeprecatedForms(),
   provideForms()
 ]);
