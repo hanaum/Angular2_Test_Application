@@ -14,7 +14,7 @@ import {TaskItem} from '../../services/taskItem';
 export class AddTaskComponent {
   @Output() taskEmitter = new EventEmitter<TaskItem>();
 
-  private model = new TaskItem(0, '', 3);
+  private model = new TaskItem('', 3);
   private hidden = false;
 
   onSubmit() {
@@ -24,7 +24,7 @@ export class AddTaskComponent {
 
   newTask() {
     this.hidden = true;
-    this.model = new TaskItem(0, '', 3);
+    this.model = new TaskItem('', 3);
     setTimeout(() => this.hidden = false, 0);
   }
 }
