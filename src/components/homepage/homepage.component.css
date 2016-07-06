@@ -1,0 +1,51 @@
+section#homepage {
+  text-align: center;
+  margin: 14% 0;
+}
+#home-logo {
+  font-family: 'Bungee Shade', sans-serif;
+  font-size: 100px;
+  color: white;
+}
+
+.home-mottos h3 {
+  font-weight: 800;
+  color: white;
+  margin: 0.938em;
+}
+
+.home-highlight {
+  color: #ffcccc;
+}
+
+hr {
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  margin: 0 2.5em;
+}
+
+.container-section {
+  padding: 2.250em;
+}
+
+.btn-get-started h3 {
+  margin: 0;
+  font-weight: 800;
+}
+
+.btn-get-started {
+  padding: 5px 40px;
+  border: 2px solid white;
+  border-radius: 10px;
+  background-color: transparent;
+  color: white;
+  -webkit-transition-property: all; /* Safari */
+  -webkit-transition-duration: .3s; /* Safari */
+  transition-property: all;
+  transition-duration: .3s;
+}
+
+.btn-get-started:hover {
+  background-color: white;
+  color: #00bfff;
+}
