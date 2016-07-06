@@ -16,13 +16,13 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let task of tasks">
+        <tr *ngFor="let task of tasks | async">
           <th>{{task.name}}</th>
           <th>{{task.priority}}</th>
           <th>
             <div class="list-actions">
               <button class="btn-visited">Visited</button>
-              <button (click)="removeTask(task.id)" class="btn-remove">Remove</button>
+              <button (click)="removeTask(task.$key)" class="btn-remove">Remove</button>
             </div>
           </th>
         </tr>

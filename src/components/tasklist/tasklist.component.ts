@@ -1,14 +1,13 @@
 import {Component, OnInit} from '@angular/core';
+import {AngularFire, FirebaseListObservable} from 'angularfire2';
 
 import {TaskItem} from '../../services/taskItem';
-import {TaskListService} from '../../services/taskList.service';
 import {AddTaskComponent} from '../addTask/addTask.component';
 
 @Component({
   selector: 'task-list',
   template: require('./taskList.component.html'),
   styles: [require('./taskList.component.css')],
-  providers: [TaskListService],
   directives: [AddTaskComponent as any]
 })
 
@@ -16,16 +15,16 @@ import {AddTaskComponent} from '../addTask/addTask.component';
  * TaskListComponent renders the table containing a list of TaskItems.
  */
 export class TaskListComponent implements OnInit {
-  private tasks: TaskItem[];
+  private tasks: FirebaseListObservable<any[]>;
 
-  constructor(private taskListService: TaskListService) {}
+  constructor(private af: AngularFire) {}
 
   ngOnInit() { this.getTaskList(); }
 
   /**
    * Calls taskListService to grab tasks and store them in an array.
    */
-  getTaskList() { this.taskListService.getTaskList().then(tasks => this.tasks = tasks); }
+  getTaskList() { this.tasks = this.af.database.list('task_list'); }
 
   /**
    * @param task
@@ -33,14 +32,8 @@ export class TaskListComponent implements OnInit {
   addTask(task: TaskItem) { this.tasks.push(task); }
 
   /**
-   * 
+   *
    * @param taskId
    */
-  removeTask(taskId: number) {
-    for (var i = 0; i < this.tasks.length; i++) {
-      if (this.tasks[i].id === taskId) {
-        this.tasks.splice(i, 1);
-      }
-    }
-  }
+  removeTask(taskId: string) { this.tasks.remove(taskId); }
 }
