@@ -5,7 +5,6 @@ import {AngularFire, FirebaseListObservable} from 'angularfire2';
 import {TaskItem} from '../../services/taskItem';
 import {AddTaskComponent} from '../addTask/addTask.component';
 
-
 @Component({
   selector: 'task-list',
   template: require('./taskList.component.html'),
@@ -26,7 +25,6 @@ export class TaskListComponent implements OnInit {
     this.id = this.route.snapshot.params['id'];
     this.getTaskList();
   }
-
 
   /**
    * Calls taskListService to grab tasks and store them in an array.
