@@ -1,8 +1,10 @@
 import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
 import {AngularFire, FirebaseListObservable} from 'angularfire2';
 
 import {TaskItem} from '../../services/taskItem';
 import {AddTaskComponent} from '../addTask/addTask.component';
+
 
 @Component({
   selector: 'task-list',
@@ -15,16 +17,21 @@ import {AddTaskComponent} from '../addTask/addTask.component';
  * TaskListComponent renders the table containing a list of TaskItems.
  */
 export class TaskListComponent implements OnInit {
+  private id: string;
   private tasks: FirebaseListObservable<any[]>;
 
-  constructor(private af: AngularFire) {}
+  constructor(private route: ActivatedRoute, private af: AngularFire) {}
 
-  ngOnInit() { this.getTaskList(); }
+  ngOnInit() {
+    this.id = this.route.snapshot.params['id'];
+    this.getTaskList();
+  }
+
 
   /**
    * Calls taskListService to grab tasks and store them in an array.
    */
-  getTaskList() { this.tasks = this.af.database.list('task_list'); }
+  getTaskList() { this.tasks = this.af.database.list('task_list/' + this.id); }
 
   /**
    * @param task
