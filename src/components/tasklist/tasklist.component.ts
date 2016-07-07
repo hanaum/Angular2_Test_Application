@@ -1,17 +1,19 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {AngularFire, FirebaseListObservable, FirebaseObjectObservable} from 'angularfire2';
+import {FirebaseListObservable, FirebaseObjectObservable} from 'angularfire2';
 import {Subscription} from 'rxjs/Rx';
 
 import {AuthenticationService} from '../../services/authentication.service';
 import {TaskItem} from '../../services/taskItem';
+import {TaskListService} from '../../services/taskList.service';
 import {AddTaskComponent} from '../addTask/addTask.component';
 
 @Component({
   selector: 'task-list',
   template: require('./taskList.component.html'),
   styles: [require('./taskList.component.css')],
-  directives: [AddTaskComponent as any]
+  directives: [AddTaskComponent as any],
+  providers: [TaskListService]
 })
 
 /**
@@ -31,16 +33,17 @@ export class TaskListComponent implements OnInit {
 
   constructor(
       private route: ActivatedRoute,
-      private af: AngularFire,
-      private authenticationService: AuthenticationService) {}
+      private authenticationService: AuthenticationService,
+      private taskListService: TaskListService) {}
 
   ngOnInit() {
     this.isInputFocused = false;
     this.id = this.route.snapshot.params['id'];
-    this.taskListName = this.af.database.object('task_list/' + this.id + '/name');
-    this.tasks = this.af.database.list('task_list/' + this.id + '/tasks');
 
-    let taskListOwner = this.af.database.object('task_list/' + this.id + '/owner');
+    this.taskListName = this.taskListService.getTaskListName(this.id);
+    this.tasks = this.taskListService.getTasks(this.id);
+    let taskListOwner = this.taskListService.getOwner(this.id);
+
     this.taskListOwnerSub = taskListOwner.subscribe((owner) => {
       // TODO this is a race condition. Need to ensure authentication status is resolved.
       this.canEdit = owner.$value === this.authenticationService.getUserId();

@@ -5,7 +5,7 @@
   </div>
   <div class="nav-links">
     <button class="btn-nav">Share</button>
-    <button *ngIf="loggedIn === -1" class="btn-nav" (click)="login()">Login</button>
-    <button *ngIf="loggedIn === 1" class="btn-nav" (click)="logout()">Logout</button>
+    <button *ngIf="loggedIn === authenticationStateReference.Unauthenticated" class="btn-nav" (click)="login()">Login</button>
+    <button *ngIf="loggedIn === authenticationStateReference.Authenticated" class="btn-nav" (click)="logout()">Logout</button>
   </div>
 </nav>

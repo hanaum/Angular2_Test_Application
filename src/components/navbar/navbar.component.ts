@@ -13,6 +13,8 @@ import {AuthenticationService, AuthenticationState} from '../../services/authent
  * NavbarComponent renders the navbar.
  */
 export class NavbarComponent {
+  // Copy of AuthenticationState to use in HTML.
+  private authenticationStateReference = AuthenticationState;  // tslint:disable-line
   private loggedIn: AuthenticationState = AuthenticationState.Unknown;
   private loginSubscription: Subscription;
 

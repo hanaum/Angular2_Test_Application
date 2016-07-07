@@ -18,6 +18,8 @@ const TASKLIST_ROUTE: string = '/list';
  * AppComponent serves as main component that holds base components.
  */
 export class HomepageComponent implements OnInit {
+  // Copy of AuthenticationState to use in HTML.
+  private authenticationStateReference = AuthenticationState;  // tslint:disable-line
   private loggedIn: AuthenticationState = AuthenticationState.Unknown;
   private loginSubscription: Subscription;
 
