@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
-import {AngularFire, FirebaseAuthState} from 'angularfire2/angularfire2';
-import {BehaviorSubject} from 'rxjs/Rx';
+import {FirebaseAuth, FirebaseAuthState} from 'angularfire2/angularfire2';
+import {BehaviorSubject, Observable} from 'rxjs/Rx';
 
 export enum AuthenticationState {
   Unauthenticated,
@@ -15,17 +15,17 @@ export class AuthenticationService {
   private authState: FirebaseAuthState;
   loginState$ = this.loginState.asObservable();
 
-  constructor(private af: AngularFire) { this.subscribeToAuth(); }
+  constructor(private firebaseAuth: FirebaseAuth) { this.subscribeToLoginState(); }
 
-  getUserId(): string {
+  getUid(): string {
     this.tryAuth();
-    return this.authState == null ? null : this.authState.uid;
+    return this._getUid(this.authState);
   }
 
   getUserEmail(): string { return this.authState == null ? null : this.authState.auth.email; }
 
-  subscribeToAuth() {
-    this.af.auth.subscribe((auth) => {
+  subscribeToLoginState() {
+    this.firebaseAuth.subscribe((auth) => {
       this.authState = auth;
       this.tryAuth();
       if (this.authState == null) {
@@ -36,13 +36,19 @@ export class AuthenticationService {
     });
   }
 
-  login() { this.af.auth.login(); }
+  subscribeToUid(): Observable<FirebaseAuthState> { return this.firebaseAuth.asObservable(); }
 
-  logout() { this.af.auth.logout(); }
+  login() { this.firebaseAuth.login(); }
+
+  logout() { this.firebaseAuth.logout(); }
+
+  private _getUid(authState: FirebaseAuthState): string {
+    return authState == null ? null : this.authState.uid;
+  }
 
   private tryAuth() {
     if (this.authState == null) {
-      this.authState = this.af.auth.getAuth();
+      this.authState = this.firebaseAuth.getAuth();
     }
   }
 }

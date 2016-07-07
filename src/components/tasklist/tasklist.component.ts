@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {FirebaseListObservable, FirebaseObjectObservable} from 'angularfire2';
-import {Subscription} from 'rxjs/Rx';
+import {Observable, Subscription} from 'rxjs/Rx';
 
 import {AuthenticationService} from '../../services/authentication.service';
 import {TaskItem} from '../../services/taskItem';
@@ -26,7 +26,7 @@ export class TaskListComponent implements OnInit {
 
   private taskListName: FirebaseObjectObservable<any>;
   private tasks: FirebaseListObservable<any[]>;
-  private taskListOwnerSub: Subscription;
+  private canEditSub: Subscription;
 
   // TODO get rid of this and have editListName take an argument.
   private listName: string;
@@ -42,15 +42,21 @@ export class TaskListComponent implements OnInit {
 
     this.taskListName = this.taskListService.getTaskListName(this.id);
     this.tasks = this.taskListService.getTasks(this.id);
-    let taskListOwner = this.taskListService.getOwner(this.id);
 
-    this.taskListOwnerSub = taskListOwner.subscribe((owner) => {
-      // TODO this is a race condition. Need to ensure authentication status is resolved.
-      this.canEdit = owner.$value === this.authenticationService.getUserId();
-    });
+    this.canEditSub =
+        Observable
+            .combineLatest(
+                this.taskListService.getOwner(this.id), this.authenticationService.subscribeToUid())
+            .subscribe((uids) => {
+              // TODO Fix below.
+              this.canEdit = uids[0].$value ===
+                  (uids[1] == null ? this.authenticationService.getUid() : uids[1].uid);
+              console.log(uids[0], uids[1]);
+              console.log(this.canEdit);
+            });
   }
 
-  ngOnDestroy() { this.taskListOwnerSub.unsubscribe(); }
+  ngOnDestroy() { this.canEditSub.unsubscribe(); }
 
   /**
    * @param task

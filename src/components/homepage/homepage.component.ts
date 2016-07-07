@@ -36,7 +36,7 @@ export class HomepageComponent implements OnInit {
   ngOnDestroy() { this.loginSubscription.unsubscribe(); }
 
   getListId() {
-    let id = this.taskListService.getNewTaskListId(this.authenticationService.getUserId());
+    let id = this.taskListService.getNewTaskListId(this.authenticationService.getUid());
     this.router.navigate([TASKLIST_ROUTE, id]);
   }
 
