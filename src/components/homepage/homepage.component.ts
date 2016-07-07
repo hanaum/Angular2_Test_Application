@@ -2,8 +2,10 @@ import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {Subscription} from 'rxjs/Rx';
 
-import {AuthenticationService} from '../../services/authentication.service';
+import {AuthenticationService, AuthenticationState} from '../../services/authentication.service';
 import {TaskListService} from '../../services/taskList.service';
+
+const TASKLIST_ROUTE: string = '/list';
 
 @Component({
   selector: 'homepage',
@@ -16,8 +18,7 @@ import {TaskListService} from '../../services/taskList.service';
  * AppComponent serves as main component that holds base components.
  */
 export class HomepageComponent implements OnInit {
-  // 0 is unknown. 1 is logged in. -1 is not logged in.
-  private loggedIn: number = 0;
+  private loggedIn: AuthenticationState = AuthenticationState.Unknown;
   private loginSubscription: Subscription;
 
   constructor(
@@ -34,8 +35,7 @@ export class HomepageComponent implements OnInit {
 
   getListId() {
     let id = this.taskListService.getNewTaskListId(this.authenticationService.getUserId());
-    let link = ['/list', id];
-    this.router.navigate(link);
+    this.router.navigate([TASKLIST_ROUTE, id]);
   }
 
   login() { this.authenticationService.login(); }

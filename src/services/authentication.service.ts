@@ -2,19 +2,23 @@ import {Injectable} from '@angular/core';
 import {AngularFire, FirebaseAuthState} from 'angularfire2/angularfire2';
 import {BehaviorSubject} from 'rxjs/Rx';
 
+export enum AuthenticationState {
+  Unauthenticated,
+  Unknown,
+  Authenticated
+}
+
 @Injectable()
 export class AuthenticationService {
-  // TODO change this to an enum.
-  private loginState: BehaviorSubject<number> = new BehaviorSubject<number>(0);
+  private loginState: BehaviorSubject<AuthenticationState> =
+      new BehaviorSubject<number>(AuthenticationState.Unknown);
   private authState: FirebaseAuthState;
   loginState$ = this.loginState.asObservable();
 
   constructor(private af: AngularFire) { this.subscribeToAuth(); }
 
   getUserId(): string {
-    if (this.authState == null) {
-      this.authState = this.af.auth.getAuth();
-    }
+    this.tryAuth();
     return this.authState == null ? null : this.authState.uid;
   }
 
@@ -22,15 +26,12 @@ export class AuthenticationService {
 
   subscribeToAuth() {
     this.af.auth.subscribe((auth) => {
-      if (auth == null) {
-        // Workaround for the bug when login -> logout -> login.
-        auth = this.af.auth.getAuth();
-      }
       this.authState = auth;
+      this.tryAuth();
       if (this.authState == null) {
-        this.loginState.next(-1);
+        this.loginState.next(AuthenticationState.Unauthenticated);
       } else {
-        this.loginState.next(1);
+        this.loginState.next(AuthenticationState.Authenticated);
       }
     });
   }
@@ -38,4 +39,10 @@ export class AuthenticationService {
   login() { this.af.auth.login(); }
 
   logout() { this.af.auth.logout(); }
+
+  private tryAuth() {
+    if (this.authState == null) {
+      this.authState = this.af.auth.getAuth();
+    }
+  }
 }
