@@ -11,14 +11,19 @@ export class AuthenticationService {
 
   constructor(private af: AngularFire) { this.subscribeToAuth(); }
 
-  getUserId(): string { return this.authState == null ? null : this.authState.uid; }
+  getUserId(): string {
+    if (this.authState == null) {
+      this.authState = this.af.auth.getAuth();
+    }
+    return this.authState == null ? null : this.authState.uid;
+  }
 
   getUserEmail(): string { return this.authState == null ? null : this.authState.auth.email; }
 
   subscribeToAuth() {
     this.af.auth.subscribe((auth) => {
       if (auth == null) {
-        // workaround for the bug when login -> logout -> login.
+        // Workaround for the bug when login -> logout -> login.
         auth = this.af.auth.getAuth();
       }
       this.authState = auth;

@@ -7,5 +7,7 @@ export class TaskListService {
 
   constructor(private af: AngularFire) { this.taskLists = this.af.database.list('task_list'); }
 
-  getNewTaskListId(): string { return this.taskLists.push({}).key; }
+  getNewTaskListId(uid: string): string {
+    return this.taskLists.push({name: 'New List', owner: uid, tasks: []}).key;
+  }
 }

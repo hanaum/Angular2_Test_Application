@@ -1,7 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {AngularFire, FirebaseListObservable} from 'angularfire2';
+import {AngularFire, FirebaseListObservable, FirebaseObjectObservable} from 'angularfire2';
+import {Subscription} from 'rxjs/Rx';
 
+import {AuthenticationService} from '../../services/authentication.service';
 import {TaskItem} from '../../services/taskItem';
 import {AddTaskComponent} from '../addTask/addTask.component';
 
@@ -18,20 +20,34 @@ import {AddTaskComponent} from '../addTask/addTask.component';
 export class TaskListComponent implements OnInit {
   private isInputFocused: boolean;
   private id: string;
-  private tasks: FirebaseListObservable<any[]>;
+  private canEdit: boolean;
 
-  constructor(private route: ActivatedRoute, private af: AngularFire) {}
+  private taskListName: FirebaseObjectObservable<any>;
+  private tasks: FirebaseListObservable<any[]>;
+  private taskListOwnerSub: Subscription;
+
+  // TODO get rid of this and have editListName take an argument.
+  private listName: string;
+
+  constructor(
+      private route: ActivatedRoute,
+      private af: AngularFire,
+      private authenticationService: AuthenticationService) {}
 
   ngOnInit() {
     this.isInputFocused = false;
     this.id = this.route.snapshot.params['id'];
-    this.getTaskList();
+    this.taskListName = this.af.database.object('task_list/' + this.id + '/name');
+    this.tasks = this.af.database.list('task_list/' + this.id + '/tasks');
+
+    let taskListOwner = this.af.database.object('task_list/' + this.id + '/owner');
+    this.taskListOwnerSub = taskListOwner.subscribe((owner) => {
+      // TODO this is a race condition. Need to ensure authentication status is resolved.
+      this.canEdit = owner.$value === this.authenticationService.getUserId();
+    });
   }
 
-  /**
-   * Calls taskListService to grab tasks and store them in an array.
-   */
-  getTaskList() { this.tasks = this.af.database.list('task_list/' + this.id); }
+  ngOnDestroy() { this.taskListOwnerSub.unsubscribe(); }
 
   /**
    * @param task
@@ -44,8 +60,10 @@ export class TaskListComponent implements OnInit {
    */
   removeTask(taskId: string) { this.tasks.remove(taskId); }
 
-  editListName(listName: string) { 
+  markTaskVisited(taskId: string) { this.tasks.update(taskId, {visited: true}); }
+
+  editListName() {
     this.isInputFocused = !this.isInputFocused;
-    // firebase logic
+    this.taskListName.set(this.listName);
   }
 }

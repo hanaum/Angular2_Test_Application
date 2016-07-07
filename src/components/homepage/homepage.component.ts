@@ -27,13 +27,13 @@ export class HomepageComponent implements OnInit {
 
   ngOnInit() {
     this.loginSubscription =
-        this.authenticationService.loginState$.subscribe((state) => { this.loggedIn = state; })
+        this.authenticationService.loginState$.subscribe((state) => { this.loggedIn = state; });
   }
 
   ngOnDestroy() { this.loginSubscription.unsubscribe(); }
 
   getListId() {
-    let id = this.taskListService.getNewTaskListId();
+    let id = this.taskListService.getNewTaskListId(this.authenticationService.getUserId());
     let link = ['/list', id];
     this.router.navigate(link);
   }
