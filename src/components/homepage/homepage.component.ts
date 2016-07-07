@@ -9,7 +9,7 @@ import {TaskListService} from '../../services/taskList.service';
   selector: 'homepage',
   template: require('./homepage.component.html'),
   styles: [require('./homepage.component.css')],
-  providers: [AuthenticationService, TaskListService]
+  providers: [TaskListService]
 })
 
 /**

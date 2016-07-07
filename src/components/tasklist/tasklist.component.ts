@@ -16,12 +16,14 @@ import {AddTaskComponent} from '../addTask/addTask.component';
  * TaskListComponent renders the table containing a list of TaskItems.
  */
 export class TaskListComponent implements OnInit {
+  private isInputFocused: boolean;
   private id: string;
   private tasks: FirebaseListObservable<any[]>;
 
   constructor(private route: ActivatedRoute, private af: AngularFire) {}
 
   ngOnInit() {
+    this.isInputFocused = false;
     this.id = this.route.snapshot.params['id'];
     this.getTaskList();
   }
@@ -41,4 +43,9 @@ export class TaskListComponent implements OnInit {
    * @param taskId
    */
   removeTask(taskId: string) { this.tasks.remove(taskId); }
+
+  editListName(listName: string) { 
+    this.isInputFocused = !this.isInputFocused;
+    // firebase logic
+  }
 }

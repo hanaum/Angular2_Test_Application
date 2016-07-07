@@ -4,7 +4,8 @@
     <p class="motto text-center">A simple and clean way to plan your trips</p>
   </div>
   <div class="nav-links">
-    <button class="btn-nav">Save</button>
     <button class="btn-nav">Share</button>
+    <button *ngIf="loggedIn === -1" class="btn-nav" (click)="login()">Login</button>
+    <button *ngIf="loggedIn === 1" class="btn-nav" (click)="logout()">Logout</button>
   </div>
 </nav>
