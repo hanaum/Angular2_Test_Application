@@ -3,7 +3,7 @@ import {enableProdMode} from '@angular/core';
 import {disableDeprecatedForms, provideForms} from '@angular/forms';
 import {bootstrap} from '@angular/platform-browser-dynamic';
 import {MODAL_BROWSER_PROVIDERS} from 'angular2-modal/platform-browser';
-import {AuthMethods, AuthProviders, FIREBASE_PROVIDERS, defaultFirebase, firebaseAuthConfig} from 'angularfire2';
+import {AuthMethods, AuthProviders, FIREBASE_PROVIDERS, defaultFirebase, firebaseAuthConfig} from 'angularfire2';  // tslint:disable-line
 
 import {AppComponent} from './components/app/app.component';
 import {APP_ROUTER_PROVIDERS} from './components/app/app.routes';

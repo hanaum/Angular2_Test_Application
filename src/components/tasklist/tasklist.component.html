@@ -1,13 +1,13 @@
 <div class="content-title">
   <div class="list-header">
     <h1 class="display-inline">
-      <span *ngIf="!isInputFocused" class="list-title">dsfsdff</span>
-      <input *ngIf="isInputFocused" [(ngModel)]="listName" class="edit-input" type="text" name="name" id="name" placeholder="...edit title">
+      <span *ngIf="!isInputFocused" class="list-title">{{(listName | async)?.$value}}</span>
+      <input [hidden]="!isInputFocused" #newName class="edit-input" type="text" name="name" id="name" placeholder="{{(listName | async)?.$value}}">
     </h1>
     <button class="edit-btn display-inline list-title" *ngIf="!isInputFocused" (click)="isInputFocused = !isInputFocused">
       Edit
     </button>
-    <button class="edit-btn display-inline list-title" *ngIf="isInputFocused" (click)="editListName()">
+    <button class="edit-btn display-inline list-title" *ngIf="isInputFocused" (click)="editListName(newName.value)">
       Save
     </button>
   </div>

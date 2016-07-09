@@ -1,3 +1,6 @@
 /**
- * Created by hanaum on 7/9/16.
+ * Class representing a single task list.
  */
+export class TaskList {
+  constructor(public name: string, public owner: string) {}
+}
