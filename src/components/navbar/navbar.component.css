@@ -2,6 +2,18 @@ nav {
   padding: 0.625em 2.250em;
 }
 
+#homepage-link-logo {
+  font-weight: 800;
+  -webkit-transition-property: all; /* Safari */
+  -webkit-transition-duration: .3s; /* Safari */
+  transition-property: all;
+  transition-duration: .3s;
+}
+
+#homepage-link-logo:hover {
+  font-weight: 400;
+}
+
 .logo {
   display: inline-block;
 }

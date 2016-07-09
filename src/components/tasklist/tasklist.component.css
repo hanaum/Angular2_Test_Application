@@ -26,6 +26,12 @@ i.fa-plus {
   bottom: 4px;
 }
 
+.list-title {
+  -webkit-animation: mymove 5s infinite; /* Chrome, Safari, Opera */
+  animation: mymove 5s infinite;
+  -webkit-animation-timing-function: linear;
+}
+
 .list-actions {
   text-align: right;
 }
@@ -41,26 +47,55 @@ i.fa-plus {
   font-size: 30px;
 }
 
+.edit-btn {
+  cursor: pointer;
+  position: relative;
+  color: white;
+  background-color: transparent;
+  border: 2px solid white;
+  border-radius: 10px;
+  font-weight: 800;
+  bottom: 4px;
+  margin-left: 0.750em;
+  height: 30px;
+  font-size: 1em;
+  margin-right: 0.750em;
+  padding: 2px 6px 4px 6px;
+  -webkit-transition-property: all; /* Safari */
+  -webkit-transition-duration: .3s; /* Safari */
+  transition-property: all;
+  transition-duration: .3s;
+}
+
+.edit-btn:hover {
+  color: #00bfff;
+  background-color: white;
+}
+
+.edit-focus {
+  background-color: pink;
+}
+
 .add-new-btn {
   cursor: pointer;
   float: right;
   position: relative;
-  top: 5px;
   color: white;
   background-color: transparent;
   border: 2px solid white;
-  border-radius: 10%;
+  border-radius: 10px;
   height: 30px;
   font-size: 1.375em;
   padding: 2px 6px 4px 6px;
-  -webkit-transition-property: color; /* Safari */
+  -webkit-transition-property: all; /* Safari */
   -webkit-transition-duration: .3s; /* Safari */
-  transition-property: color;
+  transition-property: all;
   transition-duration: .3s;
 }
 
 .add-new-btn:hover {
-  color: #248f24;
+  color: #00bfff;
+  background-color: white;
 }
 
 .btn-visited, .btn-remove {
@@ -82,4 +117,9 @@ i.fa-plus {
 .btn-remove:hover {
   border: 2px solid #ffb3b3;
   color: #ffb3b3;
+}
+
+.edit-input {
+  border: transparent;
+  border-radius: 10px;
 }

@@ -1,8 +1,14 @@
 <div class="content-title">
   <div class="list-header">
-    <h1 class="display-inline">Your Travel Wish List</h1>
-    <button class="add-new-btn display-inline" data-toggle="modal" data-target="#addModal">
-      <i class="fa fa-plus" aria-hidden="true"></i>
+    <h1 class="display-inline">
+      <span *ngIf="!isInputFocused" class="list-title">dsfsdff</span>
+      <input *ngIf="isInputFocused" [(ngModel)]="listName" class="edit-input" type="text" name="name" id="name" placeholder="...edit title">
+    </h1>
+    <button class="edit-btn display-inline list-title" *ngIf="!isInputFocused" (click)="isInputFocused = !isInputFocused">
+      Edit
+    </button>
+    <button class="edit-btn display-inline list-title" *ngIf="isInputFocused" (click)="editListName()">
+      Save
     </button>
   </div>
   <hr>
@@ -12,7 +18,11 @@
         <tr>
           <th>Location</th>
           <th>Priority</th>
-          <th></th>
+          <th>
+            <button class="add-new-btn display-inline" data-toggle="modal" data-target="#addModal">
+              <i class="fa fa-plus" aria-hidden="true"></i>
+            </button>
+          </th>
         </tr>
       </thead>
       <tbody>
