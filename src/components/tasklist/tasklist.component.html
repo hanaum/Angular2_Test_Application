@@ -4,7 +4,7 @@
       <span *ngIf="!isInputFocused" class="list-title">dsfsdff</span>
       <input *ngIf="isInputFocused" [(ngModel)]="listName" class="edit-input" type="text" name="name" id="name" placeholder="...edit title">
     </h1>
-    <button class="edit-btn display-inline list-title" *ngIf="!isInputFocused" (click)="isInputFocused = !isInputFocused;">
+    <button class="edit-btn display-inline list-title" *ngIf="!isInputFocused" (click)="isInputFocused = !isInputFocused">
       Edit
     </button>
     <button class="edit-btn display-inline list-title" *ngIf="isInputFocused" (click)="editListName()">
@@ -19,7 +19,7 @@
           <th>Location</th>
           <th>Priority</th>
           <th>
-            <button *ngIf="canEdit" class="add-new-btn display-inline" data-toggle="modal" data-target="#addModal">
+            <button class="add-new-btn display-inline" data-toggle="modal" data-target="#addModal">
               <i class="fa fa-plus" aria-hidden="true"></i>
             </button>
           </th>

@@ -19,7 +19,7 @@ export class TaskListComponent implements OnInit {
   private isInputFocused: boolean;
   private id: string;
   private tasks: FirebaseListObservable<any[]>;
-
+  private listName: string;
 
   constructor(private route: ActivatedRoute, private af: AngularFire) {}
 

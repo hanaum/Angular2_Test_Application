@@ -32,18 +32,6 @@ i.fa-plus {
   -webkit-animation-timing-function: linear;
 }
 
-/*!* Chrome, Safari, Opera *!*/
-/*@-webkit-keyframes mymove {*/
-/*from {left: 0px;}*/
-/*to {left: 300px;}*/
-/*}*/
-
-/*!* Standard syntax *!*/
-/*@keyframes mymove {*/
-/*from {left: 0px;}*/
-/*to {left: 300px;}*/
-/*}*/
-
 .list-actions {
   text-align: right;
 }
