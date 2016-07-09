@@ -26,24 +26,6 @@ i.fa-plus {
   bottom: 4px;
 }
 
-.list-title {
-  -webkit-animation: mymove 5s infinite; /* Chrome, Safari, Opera */
-  animation: mymove 5s infinite;
--webkit-animation-timing-function: linear;
-}
-
-/*!* Chrome, Safari, Opera *!*/
-/*@-webkit-keyframes mymove {*/
-  /*from {left: 0px;}*/
-  /*to {left: 300px;}*/
-/*}*/
-
-/*!* Standard syntax *!*/
-/*@keyframes mymove {*/
-  /*from {left: 0px;}*/
-  /*to {left: 300px;}*/
-/*}*/
-
 .list-actions {
   text-align: right;
 }
@@ -59,55 +41,26 @@ i.fa-plus {
   font-size: 30px;
 }
 
-.edit-btn {
+.add-new-btn {
   cursor: pointer;
+  float: right;
   position: relative;
+  top: 5px;
   color: white;
   background-color: transparent;
   border: 2px solid white;
-  border-radius: 10px;
-  font-weight: 800;
-  bottom: 4px;
-  margin-left: 0.750em;
+  border-radius: 10%;
   height: 30px;
-  font-size: 1em;
-  margin-right: 0.750em;
+  font-size: 1.375em;
   padding: 2px 6px 4px 6px;
-  -webkit-transition-property: all; /* Safari */
+  -webkit-transition-property: color; /* Safari */
   -webkit-transition-duration: .3s; /* Safari */
-  transition-property: all;
+  transition-property: color;
   transition-duration: .3s;
 }
 
-.edit-btn:hover {
-  color: #00bfff;
-  background-color: white;
-}
-
-.edit-focus {
-  background-color: pink;
-}
-
-.add-new-btn {
-   cursor: pointer;
-   float: right;
-   position: relative;
-   color: white;
-   background-color: transparent;
-   border: 2px solid white;
-   border-radius: 10px;
-   height: 30px;
-   font-size: 1.375em;
-   padding: 2px 6px 4px 6px;
-   -webkit-transition-property: all; /* Safari */
-   -webkit-transition-duration: .3s; /* Safari */
-   transition-property: all;
-   transition-duration: .3s;
- }
-
 .add-new-btn:hover {
-  color: #00bfff;
-  background-color: white;
+  color: #248f24;
 }
 
 .btn-visited, .btn-remove {
