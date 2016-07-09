@@ -1,31 +1,11 @@
 import {Injectable} from '@angular/core';
-import {AngularFire, FirebaseListObservable, FirebaseObjectObservable} from 'angularfire2/angularfire2';  // tslint:disable-line
-
-const TASKLIST_PATH: string = 'task_list';
-const DEFAULT_TASKLIST_NAME: string = 'New List';
+import {AngularFire, FirebaseListObservable} from 'angularfire2/angularfire2';
 
 @Injectable()
 export class TaskListService {
-  constructor(private af: AngularFire) {}
+  private taskLists: FirebaseListObservable<any[]>;
 
-  getNewTaskListId(uid: string): string {
-    return this.af.database.list(TASKLIST_PATH)
-        .push({name: DEFAULT_TASKLIST_NAME, owner: uid, tasks: []})
-        .key;
-  }
+  constructor(private af: AngularFire) { this.taskLists = this.af.database.list('task_list'); }
 
-  getTaskListName(id: string): FirebaseObjectObservable<any> {
-    const nameSuffix: string = '/name';
-    return this.af.database.object(TASKLIST_PATH + '/' + id + nameSuffix);
-  }
-
-  getTasks(id: string): FirebaseListObservable<any[]> {
-    const taskSuffix: string = '/tasks';
-    return this.af.database.list(TASKLIST_PATH + '/' + id + taskSuffix);
-  }
-
-  getOwner(id: string): FirebaseObjectObservable<any> {
-    const ownerSuffix: string = '/owner';
-    return this.af.database.object(TASKLIST_PATH + '/' + id + ownerSuffix);
-  }
+  getNewTaskListId(): string { return this.taskLists.push({}).key; }
 }
