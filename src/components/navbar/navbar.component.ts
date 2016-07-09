@@ -1,12 +1,14 @@
 import {Component} from '@angular/core';
 import {Subscription} from 'rxjs/Rx';
+import { ROUTER_DIRECTIVES } from '@angular/router';
 
 import {AuthenticationService, AuthenticationState} from '../../services/authentication.service';
 
 @Component({
   selector: 'nav-bar',
   template: require('./navbar.component.html'),
-  styles: [require('./navbar.component.css')]
+  styles: [require('./navbar.component.css')],
+  directives: [ROUTER_DIRECTIVES]
 })
 
 /**
