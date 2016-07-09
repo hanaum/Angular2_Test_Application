@@ -6,6 +6,6 @@
     <h3><span class="home-highlight">Choose</span> your destination</h3>
   </div>
   <button class="btn-get-started" (click)="getListId()" ><h3>Get Started!</h3></button>
-  <button *ngIf="loggedIn === -1" class="btn-get-started" (click)="login()" ><h3>Login!</h3></button>
-  <button *ngIf="loggedIn === 1" class="btn-get-started" (click)="logout()" ><h3>logout!</h3></button>
+  <button *ngIf="loggedIn === authenticationStateReference.Unauthenticated" class="btn-get-started" (click)="login()" ><h3>Login!</h3></button>
+  <button *ngIf="loggedIn === authenticationStateReference.Authenticated" class="btn-get-started" (click)="logout()" ><h3>Logout!</h3></button>
 </section>
