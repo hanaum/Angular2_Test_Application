@@ -1,13 +1,19 @@
 import {Injectable} from '@angular/core';
 import {AngularFire, FirebaseAuthState} from 'angularfire2/angularfire2';
-import {BehaviorSubject} from 'rxjs/Rx';
+import {BehaviorSubject, Observable} from 'rxjs/Rx';
+
+export enum AuthenticationState {
+  UNKNOWN,
+  LOGGED_IN,
+  LOGGED_OUT
+}
 
 @Injectable()
 export class AuthenticationService {
-  // TODO change this to an enum.
-  private loginState: BehaviorSubject<number> = new BehaviorSubject<number>(0);
+  private loginState: BehaviorSubject<AuthenticationState> =
+      new BehaviorSubject<AuthenticationState>(AuthenticationState.UNKNOWN);
   private authState: FirebaseAuthState;
-  loginState$ = this.loginState.asObservable();
+  public loginState$: Observable<AuthenticationState> = this.loginState.asObservable();
 
   constructor(private af: AngularFire) { this.subscribeToAuth(); }
 
@@ -19,9 +25,9 @@ export class AuthenticationService {
     this.af.auth.subscribe((auth) => {
       this.authState = auth;
       if (this.authState == null) {
-        this.loginState.next(-1);
+        this.loginState.next(AuthenticationState.LOGGED_OUT);
       } else {
-        this.loginState.next(1);
+        this.loginState.next(AuthenticationState.LOGGED_IN);
       }
     });
   }

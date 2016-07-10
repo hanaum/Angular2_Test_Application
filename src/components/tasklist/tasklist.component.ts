@@ -1,15 +1,17 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {AngularFire, FirebaseListObservable, FirebaseObjectObservable} from 'angularfire2';
+import {FirebaseListObservable, FirebaseObjectObservable} from 'angularfire2';
 
 import {TaskItem} from '../../services/taskItem';
+import {TaskListService} from '../../services/taskList.service';
 import {AddTaskComponent} from '../addTask/addTask.component';
 
 @Component({
   selector: 'task-list',
   template: require('./taskList.component.html'),
   styles: [require('./taskList.component.css')],
-  directives: [AddTaskComponent as any]
+  directives: [AddTaskComponent as any],
+  providers: [TaskListService]
 })
 
 /**
@@ -21,25 +23,13 @@ export class TaskListComponent implements OnInit {
   private tasks: FirebaseListObservable<any[]>;
   private listName: FirebaseObjectObservable<any[]>;
 
-  constructor(private route: ActivatedRoute, private af: AngularFire) {}
+  constructor(private route: ActivatedRoute, private taskListService: TaskListService) {}
 
   ngOnInit() {
     this.isInputFocused = false;
     this.id = this.route.snapshot.params['id'];
-    this.getTaskList();
-    this.getListName();
-  }
-
-  /**
-   * Calls taskListService to grab tasks and store them in an array.
-   */
-  getTaskList() { this.tasks = this.af.database.list('task_list/' + this.id + '/tasks'); }
-
-  /**
-   * Calls taskListService to grab tasks and store them in an array.
-   */
-  getListName() {
-    this.listName = this.af.database.object('task_list_metadata/' + this.id + '/name');
+    this.tasks = this.taskListService.getTaskList(this.id);
+    this.listName = this.taskListService.getListName(this.id);
   }
 
   /**
