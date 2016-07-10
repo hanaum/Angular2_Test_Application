@@ -6,7 +6,7 @@
   <div class="nav-links">
     <button class="btn-nav">Share</button>
     <button class="btn-nav" [routerLink]="['/userlist']">Your Lists</button>
-    <button *ngIf="loggedIn === -1" (click)="login()" class="btn-nav">Login</button>
-    <button *ngIf="loggedIn === 1" (click)="logout()" class="btn-nav">Logout</button>
+    <button *ngIf="loggedIn === authenticationState.LOGGED_OUT" (click)="login()" class="btn-nav">Login</button>
+    <button *ngIf="loggedIn === authenticationState.LOGGED_IN" (click)="logout()" class="btn-nav">Logout</button>
   </div>
 </nav>

@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ROUTER_DIRECTIVES} from '@angular/router';
 import {Subscription} from 'rxjs/Rx';
-import {AuthenticationService} from '../../services/authentication.service';
+import {AuthenticationService, AuthenticationState} from '../../services/authentication.service';
 
 @Component({
   selector: 'nav-bar',
@@ -15,8 +15,9 @@ import {AuthenticationService} from '../../services/authentication.service';
  * NavbarComponent renders the navbar.
  */
 export class NavbarComponent implements OnInit {
-  // 0 is unknown. 1 is logged in. -1 is not logged in.
-  private loggedIn: number = 0;
+  // Private reference of AuthenticationState enum for use in html.
+  private authenticationState = AuthenticationState;
+  private loggedIn: AuthenticationState = 0;
   private loginSubscription: Subscription;
 
   constructor(private authenticationService: AuthenticationService) {}
