@@ -6,6 +6,10 @@ import '@angular/common';
 import '@angular/http';
 import '@angular/router';
 
+import '@ng-bootstrap/ng-bootstrap';
+
 import 'rxjs';
 import 'angular2-modal/platform-browser';
 import 'angularfire2';
+
+import 'bootstrap';
