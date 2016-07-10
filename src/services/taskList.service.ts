@@ -1,5 +1,7 @@
 import {Injectable} from '@angular/core';
 import {AngularFire, FirebaseListObservable, FirebaseObjectObservable} from 'angularfire2/angularfire2';  // tslint:disable-line
+import {Observable} from 'rxjs/Rx';
+
 import {TaskList} from './taskList';
 
 const DEFAULT_TASK_LIST_NAME: string = 'New List';
@@ -51,6 +53,18 @@ export class TaskListService {
       return null;
     }
     return this.angularFire.database.object(TASK_LIST_METADATA_PATH + '/' + taskListId + '/owner');
+  }
+
+  // TODO There has to be a better way.
+  public getUserLists(uuidObservable: Observable<string>):
+      Observable<Observable<FirebaseObjectObservable<any>[]>> {
+    return uuidObservable.map((uuid) => {
+      return this.angularFire.database.list('users/' + uuid + '/task_lists').map((taskLists) => {
+        return taskLists.map((taskList) => {
+          return this.angularFire.database.object(TASK_LIST_METADATA_PATH + '/' + taskList['$key']);
+        });
+      });
+    });
   }
 
   /**
