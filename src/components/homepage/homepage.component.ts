@@ -27,8 +27,8 @@ export class HomepageComponent implements OnInit {
       private authenticationService: AuthenticationService) {}
 
   ngOnInit() {
-    this.loginSubscription =
-        this.authenticationService.loginState$.subscribe((state) => { this.loggedIn = state; });
+    this.loginSubscription = this.authenticationService.observableAuthenticationState.subscribe(
+        (state) => { this.loggedIn = state; });
   }
 
   ngOnDestroy() { this.loginSubscription.unsubscribe(); }

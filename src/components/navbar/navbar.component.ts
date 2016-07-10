@@ -26,8 +26,8 @@ export class NavbarComponent implements OnInit {
   constructor(private authenticationService: AuthenticationService, private router: Router) {}
 
   ngOnInit() {
-    this.loginSubscription =
-        this.authenticationService.loginState$.subscribe((state) => { this.loggedIn = state; });
+    this.loginSubscription = this.authenticationService.observableAuthenticationState.subscribe(
+        (state) => { this.loggedIn = state; });
     this.urlPathSubscription = this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         this.urlPath = event.url;
