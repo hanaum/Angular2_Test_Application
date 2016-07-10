@@ -1,0 +1,43 @@
+<div class="content-title">
+  <div class="list-header">
+    <h1 class="display-inline">
+      <span *ngIf="!isInputFocused" class="list-title">{{(listName | async)?.$value}}</span>
+      <input [hidden]="!isInputFocused" #newName class="edit-input" type="text" name="name" id="name" placeholder="{{(listName | async)?.$value}}">
+    </h1>
+    <button class="edit-btn display-inline list-title" *ngIf="!isInputFocused" (click)="isInputFocused = !isInputFocused">
+      Edit
+    </button>
+    <button class="edit-btn display-inline list-title" *ngIf="isInputFocused" (click)="editListName(newName.value)">
+      Save
+    </button>
+  </div>
+  <hr>
+  <div>
+    <table>
+      <thead>
+        <tr>
+          <th>Location</th>
+          <th>Priority</th>
+          <th>
+            <button class="add-new-btn display-inline" data-toggle="modal" data-target="#addModal">
+              <i class="fa fa-plus" aria-hidden="true"></i>
+            </button>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let task of tasks | async">
+          <th>{{task.name}}</th>
+          <th>{{task.priority}}</th>
+          <th>
+            <div class="list-actions">
+              <button class="btn-visited">Visited</button>
+              <button (click)="removeTask(task.$key)" class="btn-remove">Remove</button>
+            </div>
+          </th>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <add-task (taskEmitter)="addTask($event)"></add-task>
+</div>
