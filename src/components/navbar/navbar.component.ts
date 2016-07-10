@@ -8,7 +8,6 @@ import {AuthenticationService, AuthenticationState} from '../../services/authent
   template: require('./navbar.component.html'),
   styles: [require('./navbar.component.css')],
   directives: [ROUTER_DIRECTIVES],
-  providers: [AuthenticationService]
 })
 
 /**
@@ -16,7 +15,7 @@ import {AuthenticationService, AuthenticationState} from '../../services/authent
  */
 export class NavbarComponent implements OnInit {
   // Private reference of AuthenticationState enum for use in html.
-  private authenticationState = AuthenticationState;
+  private authenticationState = AuthenticationState;  // tslint:disable-line
   private loggedIn: AuthenticationState = 0;
   private loginSubscription: Subscription;
 

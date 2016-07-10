@@ -17,5 +17,5 @@ const TASK_LIST: TaskList[] = [
 })
 
 export class UserListViewComponent {
-  private taskLists: TaskList[] = TASK_LIST;
+  private taskLists: TaskList[] = TASK_LIST;  // tslint:disable-line
 }

@@ -9,7 +9,7 @@ import {TaskListService} from '../../services/taskList.service';
   selector: 'homepage',
   template: require('./homepage.component.html'),
   styles: [require('./homepage.component.css')],
-  providers: [AuthenticationService, TaskListService]
+  providers: [TaskListService]
 })
 
 /**
@@ -17,7 +17,7 @@ import {TaskListService} from '../../services/taskList.service';
  */
 export class HomepageComponent implements OnInit {
   // Private reference of AuthenticationState enum for use in html.
-  private authenticationState = AuthenticationState;
+  private authenticationState = AuthenticationState;  // tslint:disable-line
   private loggedIn: AuthenticationState = AuthenticationState.UNKNOWN;
   private loginSubscription: Subscription;
 
@@ -34,7 +34,7 @@ export class HomepageComponent implements OnInit {
   ngOnDestroy() { this.loginSubscription.unsubscribe(); }
 
   getListId() {
-    let id = this.taskListService.getNewTaskListId();
+    let id = this.taskListService.createNewTaskList();
     let link = ['/list', id];
     this.router.navigate(link);
   }
