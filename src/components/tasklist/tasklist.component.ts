@@ -28,22 +28,8 @@ export class TaskListComponent implements OnInit {
   ngOnInit() {
     this.isInputFocused = false;
     this.id = this.route.snapshot.params['id'];
-    this.tasks = this.getTaskList();
-    this.listName = this.getListName();
-  }
-
-  /**
-   * Calls taskListService to grab tasks and store them in an array.
-   */
-  private getTaskList(): FirebaseListObservable<any[]> {
-    return this.taskListService.getTaskList(this.id);
-  }
-
-  /**
-   * Calls taskListService to grab tasks and store them in an array.
-   */
-  private getListName(): FirebaseObjectObservable<any[]> {
-    return this.taskListService.getListName(this.id);
+    this.tasks = this.taskListService.getTaskList(this.id);
+    this.listName = this.taskListService.getListName(this.id);
   }
 
   /**

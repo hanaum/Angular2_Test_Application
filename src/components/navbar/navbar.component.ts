@@ -16,7 +16,7 @@ import {AuthenticationService, AuthenticationState} from '../../services/authent
 export class NavbarComponent implements OnInit {
   // Private reference of AuthenticationState enum for use in html.
   private authenticationState = AuthenticationState;  // tslint:disable-line
-  private loggedIn: AuthenticationState = 0;
+  private loggedIn: AuthenticationState = AuthenticationState.UNKNOWN;
   private loginSubscription: Subscription;
 
   constructor(private authenticationService: AuthenticationService) {}
