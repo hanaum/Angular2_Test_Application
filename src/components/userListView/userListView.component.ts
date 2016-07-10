@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {ROUTER_DIRECTIVES} from '@angular/router';
 import {FirebaseObjectObservable} from 'angularfire2/angularfire2';
 import {Subscription} from 'rxjs/Rx';
 
@@ -9,6 +10,7 @@ import {TaskListService} from '../../services/taskList.service';
   selector: 'user-lists',
   template: require('./userListView.component.html'),
   styles: [require('./userListView.component.css')],
+  directives: [ROUTER_DIRECTIVES],
   providers: [TaskListService as any]
 })
 
