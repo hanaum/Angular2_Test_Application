@@ -2,4 +2,5 @@
 Experimenting with using Angular 2 with Typescript, Gulp, Webpack, and Karma.
 
 Work in progress.
-choosetogo.hanaum.com
+
+http://choosetogo.hanaum.com
