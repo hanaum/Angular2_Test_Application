@@ -17,11 +17,13 @@ export class AuthenticationService {
 
   constructor(private af: AngularFire) { this.subscribeToAuth(); }
 
-  getUserId(): string { return this.authState == null ? null : this.authState.uid; }
+  public getUserId(): string { return this.authState == null ? null : this.authState.uid; }
 
-  getUserEmail(): string { return this.authState == null ? null : this.authState.auth.email; }
+  public login() { this.af.auth.login(); }
 
-  subscribeToAuth() {
+  public logout() { this.af.auth.logout(); }
+
+  private subscribeToAuth() {
     this.af.auth.subscribe((auth) => {
       this.authState = auth;
       if (this.authState == null) {
@@ -31,8 +33,4 @@ export class AuthenticationService {
       }
     });
   }
-
-  login() { this.af.auth.login(); }
-
-  logout() { this.af.auth.logout(); }
 }
