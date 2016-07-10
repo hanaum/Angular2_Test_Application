@@ -43,6 +43,17 @@ export class TaskListService {
   }
 
   /**
+   * @param taskListId
+   * @returns {any}
+   */
+  public getListOwner(taskListId: string): FirebaseObjectObservable<any[]> {
+    if (taskListId == null) {
+      return null;
+    }
+    return this.angularFire.database.object(TASK_LIST_METADATA_PATH + '/' + taskListId + '/owner');
+  }
+
+  /**
    * Creates an object containing instructions to create a new task list.
    * @param id Task list id.
    * @param userId
