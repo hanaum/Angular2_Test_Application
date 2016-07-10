@@ -14,7 +14,7 @@ import {AuthenticationService} from '../../services/authentication.service';
 /**
  * NavbarComponent renders the navbar.
  */
-export class NavbarComponent implements OnInit{
+export class NavbarComponent implements OnInit {
   // 0 is unknown. 1 is logged in. -1 is not logged in.
   private loggedIn: number = 0;
   private loginSubscription: Subscription;

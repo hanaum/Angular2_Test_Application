@@ -1,0 +1,17 @@
+section#userlist {
+  padding: 5%;
+}
+
+#list-section-title {
+  text-align: center;
+}
+
+.userlist-container {
+  margin: 0 auto;
+}
+
+.list {
+  text-align: center;
+  cursor: pointer;
+}
+
