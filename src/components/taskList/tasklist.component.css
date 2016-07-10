@@ -100,7 +100,7 @@ i.fa-plus {
 
 .btn-visited, .btn-remove {
   border: 2px solid white;
-  border-radius: 10%;
+  border-radius: 10px;
   color: white;
   background-color: transparent;
   -webkit-transition-property: all; /* Safari */
