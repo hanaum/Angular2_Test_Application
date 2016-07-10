@@ -1,7 +1,5 @@
 import {Injectable} from '@angular/core';
 import {AngularFire, FirebaseListObservable, FirebaseObjectObservable} from 'angularfire2/angularfire2';  // tslint:disable-line
-
-import {AuthenticationService} from './authentication.service';
 import {TaskList} from './taskList';
 
 const DEFAULT_TASK_LIST_NAME: string = 'New List';
@@ -9,16 +7,14 @@ const TASK_LIST_METADATA_PATH: string = 'task_list_metadata';
 
 @Injectable()
 export class TaskListService {
-  constructor(
-      private angularFire: AngularFire, private authenticationService: AuthenticationService) {}
+  constructor(private angularFire: AngularFire) {}
 
   /**
    * @returns {string} id of newly created task list.
    */
-  public createNewTaskList(): string {
+  public createNewTaskList(uuid: string): string {
     let id = this.getNewTaskListID();
-    let userId: string = this.authenticationService.getUserId();
-    let update: Map<any, any> = this.generateCreateTaskListInstructions(id, userId);
+    let update: Map<any, any> = this.generateCreateTaskListInstructions(id, uuid);
 
     this.angularFire.database.object('').update(update);
     return id;
