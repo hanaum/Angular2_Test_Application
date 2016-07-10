@@ -1,6 +1,5 @@
 import {Component} from '@angular/core';
 import {TaskList} from '../../services/taskList';
-import {NavbarComponent} from '../navbar/navbar.component';
 
 const TASK_LIST: TaskList[] = [
   new TaskList('hanalist', 'hana'),
@@ -12,8 +11,7 @@ const TASK_LIST: TaskList[] = [
 @Component({
   selector: 'user-lists',
   template: require('./userListView.component.html'),
-  styles: [require('./userListView.component.css')],
-  directives: [NavbarComponent as any]
+  styles: [require('./userListView.component.css')]
 })
 
 export class UserListViewComponent {

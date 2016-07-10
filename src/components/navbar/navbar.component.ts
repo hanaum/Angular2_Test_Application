@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {ROUTER_DIRECTIVES} from '@angular/router';
+import {NavigationEnd, ROUTER_DIRECTIVES, Router} from '@angular/router';
 import {Subscription} from 'rxjs/Rx';
+
 import {AuthenticationService, AuthenticationState} from '../../services/authentication.service';
 
 @Component({
@@ -19,14 +20,25 @@ export class NavbarComponent implements OnInit {
   private loggedIn: AuthenticationState = AuthenticationState.UNKNOWN;
   private loginSubscription: Subscription;
 
-  constructor(private authenticationService: AuthenticationService) {}
+  private urlPath: string;
+  private urlPathSubscription: Subscription;
+
+  constructor(private authenticationService: AuthenticationService, private router: Router) {}
 
   ngOnInit() {
     this.loginSubscription =
         this.authenticationService.loginState$.subscribe((state) => { this.loggedIn = state; });
+    this.urlPathSubscription = this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        this.urlPath = event.url;
+      }
+    });
   }
 
-  ngOnDestroy() { this.loginSubscription.unsubscribe(); }
+  ngOnDestroy() {
+    this.loginSubscription.unsubscribe();
+    this.urlPathSubscription.unsubscribe();
+  }
 
   login() { this.authenticationService.login(); }
 
