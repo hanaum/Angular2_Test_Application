@@ -1,7 +1,12 @@
 section#homepage {
   text-align: center;
   margin: 14% 0;
+  transition: all .8s linear;
+  -o-transition: all .8s linear;
+  -moz-transition: all .8s linear;
+  -webkit-transition: all .8s linear;
 }
+
 #home-logo {
   font-family: 'Bungee Shade', sans-serif;
   font-size: 100px;
@@ -28,24 +33,89 @@ hr {
   padding: 2.250em;
 }
 
-.btn-get-started h3 {
+.btn-homepage h3 {
   margin: 0;
   font-weight: 800;
 }
 
-.btn-get-started {
+.btn-homepage {
   padding: 5px 40px;
   border: 2px solid white;
   border-radius: 10px;
   background-color: transparent;
   color: white;
-  -webkit-transition-property: all; /* Safari */
-  -webkit-transition-duration: .3s; /* Safari */
-  transition-property: all;
-  transition-duration: .3s;
 }
 
-.btn-get-started:hover {
+.btn-homepage:hover {
   background-color: white;
   color: #00bfff;
+}
+
+.inline-block {
+  display: inline-block;
+}
+
+.temp {
+  opacity: 0;
+  width: 200px;
+}
+
+.fadeleft {
+  width: 280px;
+
+  -webkit-animation: fade-left .5s ; /* Chrome, Safari, Opera */
+  animation: fade-left .5s ;
+}
+
+@-webkit-keyframes fade-left {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@-moz-keyframes fade-left {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@-o-keyframes fade-left {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes fade-left {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.fadein {
+  width: 200px;
+
+  -moz-animation-name: list-name-fadein;
+  -moz-animation-iteration-count: 1;
+  -moz-animation-timing-function: ease-in;
+  -moz-animation-duration: .2s;
+
+  -webkit-animation-name: list-name-fadein;
+  -webkit-animation-iteration-count: 1;
+  -webkit-animation-timing-function: ease-in;
+  -webkit-animation-duration: .2s;
+
+  animation-name: list-name-fadein;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-in;
+  animation-duration: .2s;
+}
+
+@-webkit-keyframes list-name-fadein {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+@-moz-keyframes list-name-fadein {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+@-o-keyframes list-name-fadein {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+@keyframes list-name-fadein {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
 }
