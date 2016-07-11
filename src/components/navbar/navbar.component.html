@@ -10,4 +10,4 @@
     <button *ngIf="loggedIn === authenticationState.LOGGED_IN" (click)="logout()" class="btn-nav">Logout</button>
   </div>
 </nav>
-<url-modal></url-modal>
+<url-modal [url]="urlBasePath + urlPath"></url-modal>

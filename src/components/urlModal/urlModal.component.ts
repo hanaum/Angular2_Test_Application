@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 @Component({
   selector: 'url-modal',
@@ -10,4 +10,5 @@ import {Component} from '@angular/core';
  * UrlModalComponent renders the modal containing the list url.
  */
 export class UrlModalComponent {
+  @Input('url') url: string;
 }
