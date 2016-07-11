@@ -5,6 +5,8 @@ import {Subscription} from 'rxjs/Rx';
 import {AuthenticationService, AuthenticationState} from '../../services/authentication.service';
 import {UrlModalComponent} from '../urlModal/urlModal.component';
 
+const URL_BASE_PATH: string = 'choosetogo.hanaum.com/#';
+
 @Component({
   selector: 'nav-bar',
   template: require('./navbar.component.html'),
@@ -16,6 +18,7 @@ import {UrlModalComponent} from '../urlModal/urlModal.component';
  * NavbarComponent renders the navbar.
  */
 export class NavbarComponent implements OnInit {
+  private urlBasePath: string = URL_BASE_PATH;  // tslint:disable-line
   // Private reference of AuthenticationState enum for use in html.
   private authenticationState = AuthenticationState;  // tslint:disable-line
   private loggedIn: AuthenticationState = AuthenticationState.UNKNOWN;
