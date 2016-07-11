@@ -1,8 +1,10 @@
 <section id="userlist">
   <div class="userlist-container">
     <h1 id="list-section-title">Your lists</h1>
-    <div *ngFor="let list of taskLists" class="list">
-      <a *ngIf="list | async" [routerLink] = "['/list/',  (list| async)?.$key]"><h1>{{(list| async)?.name}}</h1></a>
+    <div *ngFor="let list of taskLists">
+      <div *ngIf="list | async">
+        <a [routerLink] = "['/list/',  (list| async)?.$key]"><h1 class="list">{{(list| async)?.name}}</h1></a>
+      </div>
     </div>
   </div>
 </section>

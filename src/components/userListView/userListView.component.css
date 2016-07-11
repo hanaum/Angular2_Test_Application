@@ -13,5 +13,36 @@ section#userlist {
 .list {
   text-align: center;
   cursor: pointer;
+
+  -moz-animation-name: list-name-fadein;
+  -moz-animation-iteration-count: 1;
+  -moz-animation-timing-function: ease-in;
+  -moz-animation-duration: 0.7s;
+
+  -webkit-animation-name: list-name-fadein;
+  -webkit-animation-iteration-count: 1;
+  -webkit-animation-timing-function: ease-in;
+  -webkit-animation-duration: 0.7s;
+
+  animation-name: list-name-fadein;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-in;
+  animation-duration: 0.7s;
 }
 
+@-webkit-keyframes list-name-fadein {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+@-moz-keyframes list-name-fadein {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+@-o-keyframes list-name-fadein {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+@keyframes list-name-fadein {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
