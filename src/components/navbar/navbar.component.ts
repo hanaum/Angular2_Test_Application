@@ -3,12 +3,13 @@ import {NavigationEnd, ROUTER_DIRECTIVES, Router} from '@angular/router';
 import {Subscription} from 'rxjs/Rx';
 
 import {AuthenticationService, AuthenticationState} from '../../services/authentication.service';
+import {UrlModalComponent} from '../urlModal/urlModal.component';
 
 @Component({
   selector: 'nav-bar',
   template: require('./navbar.component.html'),
   styles: [require('./navbar.component.css')],
-  directives: [ROUTER_DIRECTIVES],
+  directives: [ROUTER_DIRECTIVES, UrlModalComponent as any],
 })
 
 /**

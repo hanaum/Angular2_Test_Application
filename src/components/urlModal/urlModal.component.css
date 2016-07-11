@@ -1,0 +1,12 @@
+#list-url {
+  padding: 1em 0.938em;
+}
+
+.modal-header {
+  padding: 1em 0.938em;
+  border-bottom: 2px solid #00bfff;
+}
+
+.modal-header .close {
+  margin-top: 0.2em;
+}

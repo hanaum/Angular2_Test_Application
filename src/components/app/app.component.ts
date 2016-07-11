@@ -1,15 +1,16 @@
 import '../../../public/css/styles.css';
 
 import {Component} from '@angular/core';
-import {NGB_DIRECTIVES, NGB_PRECOMPILE} from '@ng-bootstrap/ng-bootstrap';
 import {ROUTER_DIRECTIVES} from '@angular/router';
+import {NGB_DIRECTIVES, NGB_PRECOMPILE} from '@ng-bootstrap/ng-bootstrap';
+
 import {NavbarComponent} from '../navbar/navbar.component';
 
 @Component({
   selector: 'my-app',
   template: require('./app.component.html'),
   directives: [ROUTER_DIRECTIVES, NGB_DIRECTIVES, NavbarComponent as any],
-  precompile: [ NGB_PRECOMPILE ]
+  precompile: [NGB_PRECOMPILE]
 })
 
 /**
