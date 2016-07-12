@@ -1,24 +1,23 @@
 import {Component, OnInit} from '@angular/core';
-import {NavigationEnd, ROUTER_DIRECTIVES, Router} from '@angular/router';
+import {ROUTER_DIRECTIVES} from '@angular/router';
 import {Subscription} from 'rxjs/Rx';
 
 import {AuthenticationService, AuthenticationState} from '../../services/authentication.service';
+import {RoutingService} from '../../services/routing.service';
 import {UrlModalComponent} from '../urlModal/urlModal.component';
-
-const URL_BASE_PATH: string = 'choosetogo.hanaum.com/#';
 
 @Component({
   selector: 'nav-bar',
   template: require('./navbar.component.html'),
   styles: [require('./navbar.component.css')],
   directives: [ROUTER_DIRECTIVES, UrlModalComponent as any],
+  providers: [RoutingService]
 })
 
 /**
  * NavbarComponent renders the navbar.
  */
 export class NavbarComponent implements OnInit {
-  private urlBasePath: string = URL_BASE_PATH;  // tslint:disable-line
   // Private reference of AuthenticationState enum for use in html.
   private authenticationState = AuthenticationState;  // tslint:disable-line
   private loggedIn: AuthenticationState = AuthenticationState.UNKNOWN;
@@ -27,16 +26,15 @@ export class NavbarComponent implements OnInit {
   private urlPath: string;
   private urlPathSubscription: Subscription;
 
-  constructor(private authenticationService: AuthenticationService, private router: Router) {}
+  constructor(
+      private authenticationService: AuthenticationService,
+      private routingService: RoutingService) {}
 
   ngOnInit() {
     this.loginSubscription = this.authenticationService.observableAuthenticationState.subscribe(
         (state) => { this.loggedIn = state; });
-    this.urlPathSubscription = this.router.events.subscribe((event) => {
-      if (event instanceof NavigationEnd) {
-        this.urlPath = event.url;
-      }
-    });
+    this.urlPathSubscription = this.routingService.observableRouteState.subscribe(
+        (urlPath) => { this.urlPath = urlPath; });
   }
 
   ngOnDestroy() {

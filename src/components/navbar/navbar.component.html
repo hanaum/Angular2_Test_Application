@@ -1,4 +1,4 @@
-<nav *ngIf="urlPath !== '/'">
+<nav *ngIf="urlPath !== 'choosetogo.hanaum.com/#/'">
   <div class="logo">
     <h1><a id="homepage-link-logo" [routerLink]="['']">Choose To Go</a></h1>
     <p class="motto text-center">A simple and clean way to plan your trips</p>
@@ -10,4 +10,4 @@
     <button *ngIf="loggedIn === authenticationState.LOGGED_IN" (click)="logout()" class="btn-nav">Logout</button>
   </div>
 </nav>
-<url-modal [url]="urlBasePath + urlPath"></url-modal>
+<url-modal [url]="urlPath"></url-modal>

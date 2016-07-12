@@ -1,15 +1,15 @@
 import {Component, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
 import {Subscription} from 'rxjs/Rx';
 
 import {AuthenticationService, AuthenticationState} from '../../services/authentication.service';
+import {RoutingService} from '../../services/routing.service';
 import {TaskListService} from '../../services/taskList.service';
 
 @Component({
   selector: 'homepage',
   template: require('./homepage.component.html'),
   styles: [require('./homepage.component.css')],
-  providers: [TaskListService]
+  providers: [TaskListService, RoutingService]
 })
 
 /**
@@ -22,9 +22,9 @@ export class HomepageComponent implements OnInit {
   private loginSubscription: Subscription;
 
   constructor(
-      private router: Router,
       private taskListService: TaskListService,
-      private authenticationService: AuthenticationService) {}
+      private authenticationService: AuthenticationService,
+      private routingService: RoutingService) {}
 
   ngOnInit() {
     this.loginSubscription = this.authenticationService.observableAuthenticationState.subscribe(
@@ -33,11 +33,10 @@ export class HomepageComponent implements OnInit {
 
   ngOnDestroy() { this.loginSubscription.unsubscribe(); }
 
-  getListId() {
+  private navigateToList() {
     let uuid: string = this.authenticationService.getUserId();
-    let id: string = this.taskListService.createNewTaskList(uuid);
-    let link: string[] = ['/list', id];
-    this.router.navigate(link);
+    let listId: string = this.taskListService.createNewTaskList(uuid);
+    this.routingService.navigateToList(listId);
   }
 
   login() { this.authenticationService.login(); }
