@@ -10,8 +10,7 @@ import {UrlModalComponent} from '../urlModal/urlModal.component';
   selector: 'nav-bar',
   template: require('./navbar.component.html'),
   styles: [require('./navbar.component.css')],
-  directives: [ROUTER_DIRECTIVES, UrlModalComponent as any],
-  providers: [RoutingService]
+  directives: [ROUTER_DIRECTIVES, UrlModalComponent as any]
 })
 
 /**
