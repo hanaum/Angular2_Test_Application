@@ -9,7 +9,7 @@ import {TaskListService} from '../../services/taskList.service';
   selector: 'homepage',
   template: require('./homepage.component.html'),
   styles: [require('./homepage.component.css')],
-  providers: [TaskListService, RoutingService]
+  providers: [TaskListService]
 })
 
 /**
@@ -33,7 +33,7 @@ export class HomepageComponent implements OnInit {
 
   ngOnDestroy() { this.loginSubscription.unsubscribe(); }
 
-  private navigateToList() {
+  private navigateToList() {  // tslint:disable-line
     let uuid: string = this.authenticationService.getUserId();
     let listId: string = this.taskListService.createNewTaskList(uuid);
     this.routingService.navigateToList(listId);
