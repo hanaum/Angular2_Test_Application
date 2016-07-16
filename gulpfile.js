@@ -37,8 +37,10 @@ gulp.task('lint', ['format:enforce'], () => {
   const tslint = require('gulp-tslint');
   const tslintConfig = require('./tslint.json');
   return gulp.src(srcsToFmt)
-      .pipe(tslint({tslint: require('tslint').default, configuration: tslintConfig}))
-      .pipe(tslint.report('prose', {emitError: true}));
+      .pipe(tslint({tslint: require('tslint').default,
+                    configuration: tslintConfig,
+                    formatter: 'prose'}))
+      .pipe(tslint.report({emitError: true}));
 });
 
 gulp.task('compile-dev', ['clean'], function() {
