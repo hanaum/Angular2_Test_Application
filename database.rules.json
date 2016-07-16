@@ -1,6 +1,23 @@
 {
   "rules": {
-    ".read": true,
-    ".write": true
+    "task_list_metadata": {
+      ".read": true,
+      "$task_list_id": {
+        ".write": "!data.exists() || !data.child('owner').exists() || data.child('owner').val() == auth.uid"
+      }
+    },
+    "task_list": {
+      ".read": true,
+      "$task_list_id": {
+        ".validate": "root.child('task_list_metadata/' + $task_list_id).exists()",
+        ".write": "!root.child('task_list_metadata/' + $task_list_id).child('owner').exists() || root.child('task_list_metadata/' + $task_list_id).child('owner').val() == auth.uid"
+      }
+    },
+    "users": {
+      "$uid": {
+        ".read": "$uid == auth.uid || $uid == 'null'",
+        ".write": "$uid == auth.uid"
+      }
+    }
   }
 }
