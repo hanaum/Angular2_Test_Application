@@ -2,15 +2,12 @@ import {HashLocationStrategy, LocationStrategy} from '@angular/common';
 import {enableProdMode} from '@angular/core';
 import {disableDeprecatedForms, provideForms} from '@angular/forms';
 import {bootstrap} from '@angular/platform-browser-dynamic';
-import {GOOGLE_MAPS_PROVIDERS} from 'angular2-google-maps/core/index';
-import {provideLazyMapsAPILoaderConfig} from 'angular2-google-maps/core/services/maps-api-loader/lazy-maps-api-loader';  // tslint:disable-line
 import {MODAL_BROWSER_PROVIDERS} from 'angular2-modal/platform-browser';
 import {FIREBASE_PROVIDERS, defaultFirebase, firebaseAuthConfig} from 'angularfire2';
 
 import {AppComponent} from './components/app/app.component';
 import {APP_ROUTER_PROVIDERS} from './components/app/app.routes';
 import {FIREBASE_AUTH_CONFIG, FIREBASE_CONFIG} from './configs/firebase.config';
-import {MAPS_CONFIG} from './configs/googleMaps.config';
 import {AuthenticationService} from './services/authentication.service';
 import {RoutingService} from './services/routing.service';
 
@@ -28,7 +25,5 @@ bootstrap(AppComponent as any, [
   disableDeprecatedForms(),
   provideForms(),
   AuthenticationService,
-  RoutingService,
-  GOOGLE_MAPS_PROVIDERS,
-  provideLazyMapsAPILoaderConfig(MAPS_CONFIG)
+  RoutingService
 ]);
