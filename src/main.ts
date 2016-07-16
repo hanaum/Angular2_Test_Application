@@ -2,14 +2,17 @@ import {HashLocationStrategy, LocationStrategy} from '@angular/common';
 import {enableProdMode} from '@angular/core';
 import {disableDeprecatedForms, provideForms} from '@angular/forms';
 import {bootstrap} from '@angular/platform-browser-dynamic';
+import {GOOGLE_MAPS_PROVIDERS} from 'angular2-google-maps/core/index';
+import {provideLazyMapsAPILoaderConfig} from 'angular2-google-maps/core/services/maps-api-loader/lazy-maps-api-loader';  // tslint:disable-line
 import {MODAL_BROWSER_PROVIDERS} from 'angular2-modal/platform-browser';
-import {AuthMethods, AuthProviders, FIREBASE_PROVIDERS, defaultFirebase, firebaseAuthConfig} from 'angularfire2';  // tslint:disable-line
+import {FIREBASE_PROVIDERS, defaultFirebase, firebaseAuthConfig} from 'angularfire2';
 
 import {AppComponent} from './components/app/app.component';
 import {APP_ROUTER_PROVIDERS} from './components/app/app.routes';
+import {FIREBASE_AUTH_CONFIG, FIREBASE_CONFIG} from './config/firebase.config';
+import {MAPS_CONFIG} from './config/googleMaps.config';
 import {AuthenticationService} from './services/authentication.service';
 import {RoutingService} from './services/routing.service';
-import {GOOGLE_MAPS_PROVIDERS} from "angular2-google-maps/core/index";
 
 if (process.env.ENV === 'production') {
   enableProdMode();
@@ -20,16 +23,12 @@ bootstrap(AppComponent as any, [
   FIREBASE_PROVIDERS,
   APP_ROUTER_PROVIDERS,
   {provide: LocationStrategy, useClass: HashLocationStrategy},
-  defaultFirebase({
-    apiKey: 'AIzaSyCkIwlM9xp_nI93k8XmEAjXoCy5dLQAwOY',
-    authDomain: 'choosetogo-61e03.firebaseapp.com',
-    databaseURL: 'https://choosetogo-61e03.firebaseio.com',
-    storageBucket: 'choosetogo-61e03.appspot.com',
-  }),
-  firebaseAuthConfig({provider: AuthProviders.Google, method: AuthMethods.Redirect}),
+  defaultFirebase(FIREBASE_CONFIG),
+  firebaseAuthConfig(FIREBASE_AUTH_CONFIG),
   disableDeprecatedForms(),
   provideForms(),
   AuthenticationService,
   RoutingService,
-  GOOGLE_MAPS_PROVIDERS
+  GOOGLE_MAPS_PROVIDERS,
+  provideLazyMapsAPILoaderConfig(MAPS_CONFIG)
 ]);
