@@ -9,8 +9,8 @@ import {FIREBASE_PROVIDERS, defaultFirebase, firebaseAuthConfig} from 'angularfi
 
 import {AppComponent} from './components/app/app.component';
 import {APP_ROUTER_PROVIDERS} from './components/app/app.routes';
-import {FIREBASE_AUTH_CONFIG, FIREBASE_CONFIG} from './config/firebase.config';
-import {MAPS_CONFIG} from './config/googleMaps.config';
+import {FIREBASE_AUTH_CONFIG, FIREBASE_CONFIG} from './configs/firebase.config';
+import {MAPS_CONFIG} from './configs/googleMaps.config';
 import {AuthenticationService} from './services/authentication.service';
 import {RoutingService} from './services/routing.service';
 

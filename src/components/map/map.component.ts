@@ -9,6 +9,6 @@ import {GOOGLE_MAPS_DIRECTIVES} from 'angular2-google-maps/core/directives-const
 })
 
 export class MapComponent {
-  lat: number = 37.38605;
-  lng: number = -122.08385;
+  lat: number = 37.3992627;
+  lng: number = -121.9302447;
 }
