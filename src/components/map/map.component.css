@@ -1,0 +1,8 @@
+import {Component} from "@angular/core";
+import {GOOGLE_MAPS_DIRECTIVES} from "angular2-google-maps/core/directives-const";
+
+@Component({
+  selector: 'map',
+  directives: [GOOGLE_MAPS_DIRECTIVES],
+
+})
