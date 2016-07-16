@@ -9,6 +9,7 @@ import {AppComponent} from './components/app/app.component';
 import {APP_ROUTER_PROVIDERS} from './components/app/app.routes';
 import {AuthenticationService} from './services/authentication.service';
 import {RoutingService} from './services/routing.service';
+import {GOOGLE_MAPS_PROVIDERS} from "angular2-google-maps/core/index";
 
 if (process.env.ENV === 'production') {
   enableProdMode();
@@ -19,7 +20,6 @@ bootstrap(AppComponent as any, [
   FIREBASE_PROVIDERS,
   APP_ROUTER_PROVIDERS,
   {provide: LocationStrategy, useClass: HashLocationStrategy},
-  // Initialize Firebase app.
   defaultFirebase({
     apiKey: 'AIzaSyCkIwlM9xp_nI93k8XmEAjXoCy5dLQAwOY',
     authDomain: 'choosetogo-61e03.firebaseapp.com',
@@ -30,5 +30,6 @@ bootstrap(AppComponent as any, [
   disableDeprecatedForms(),
   provideForms(),
   AuthenticationService,
-  RoutingService
+  RoutingService,
+  GOOGLE_MAPS_PROVIDERS
 ]);

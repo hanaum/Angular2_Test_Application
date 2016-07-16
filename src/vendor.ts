@@ -13,3 +13,4 @@ import 'angular2-modal/platform-browser';
 import 'angularfire2';
 
 import 'bootstrap';
+import 'angular2-google-maps/core';
