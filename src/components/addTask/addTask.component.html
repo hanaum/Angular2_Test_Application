@@ -7,7 +7,7 @@
         </button>
         <h4 class="modal-title" id="myModalLabel">Add your new location!</h4>
       </div>
-      <form #taskForm="ngForm">
+      <form #taskForm="ngForm" onkeypress="return event.keyCode != 13;">
         <div class="modal-body ">
           <div class="form-group">
             <label for="add-task-name">Name</label>

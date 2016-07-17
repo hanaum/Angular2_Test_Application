@@ -1,4 +1,3 @@
-import PlaceResult = google.maps.places.PlaceResult;
 /**
  * Class representing a single task.
  */
@@ -7,5 +6,5 @@ export class TaskItem {
       public name: string,
       public priority: number,
       public description: string,
-      public details: PlaceResult) {}
+      public placeId: string) {}
 }

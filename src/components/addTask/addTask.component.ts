@@ -14,7 +14,7 @@ import PlaceResult = google.maps.places.PlaceResult;
  * TaskListComponent renders the table containing a list of TaskItems.
  */
 export class AddTaskComponent implements OnInit {
-  private autoComplete: any;
+  private autoComplete: google.maps.places.Autocomplete;
 
   @Output() taskEmitter = new EventEmitter<TaskItem>();
 
@@ -30,6 +30,7 @@ export class AddTaskComponent implements OnInit {
       name = details.name;
     }
     description = description || '';
-    this.taskEmitter.emit(new TaskItem(name, priority, description, details));
+    let placeId = details ? details.place_id : '';
+    this.taskEmitter.emit(new TaskItem(name, priority, description, placeId));
   }
 }
