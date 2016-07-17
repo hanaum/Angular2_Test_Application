@@ -1,6 +1,8 @@
-import {Component, EventEmitter, Output} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 
 import {TaskItem} from '../../services/taskItem';
+
+import PlaceResult = google.maps.places.PlaceResult;
 
 @Component({
   selector: 'add-task',
@@ -11,20 +13,24 @@ import {TaskItem} from '../../services/taskItem';
 /**
  * TaskListComponent renders the table containing a list of TaskItems.
  */
-export class AddTaskComponent {
+export class AddTaskComponent implements OnInit {
+  private autoComplete: google.maps.places.Autocomplete;
+
   @Output() taskEmitter = new EventEmitter<TaskItem>();
 
-  private model = new TaskItem('', 3);
-  private hidden = false;
-
-  onSubmit() {
-    this.taskEmitter.emit(this.model);
-    this.newTask();
+  ngOnInit() {
+    // TODO investigate using @viewChild.
+    let taskNameInputBox = document.getElementById('add-task-name');
+    this.autoComplete = new google.maps.places.Autocomplete(taskNameInputBox as any);
   }
 
-  newTask() {
-    this.hidden = true;
-    this.model = new TaskItem('', 3);
-    setTimeout(() => this.hidden = false, 0);
+  onSubmit(name: string, priority: number, description?: string) {
+    let details: PlaceResult = this.autoComplete.getPlace() || null;
+    if (details != null && details.name.length < name.length) {
+      name = details.name;
+    }
+    description = description || '';
+    let placeId = details ? details.place_id : '';
+    this.taskEmitter.emit(new TaskItem(name, priority, description, placeId));
   }
 }
