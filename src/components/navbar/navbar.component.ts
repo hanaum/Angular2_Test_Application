@@ -33,11 +33,7 @@ export class NavbarComponent implements OnInit {
     this.loginSubscription = this.authenticationService.observableAuthenticationState.subscribe(
         (state) => { this.loggedIn = state; });
     this.urlPathSubscription = this.routingService.observableRouteState.subscribe(
-
-        (urlPath) => {
-          this.urlPath = urlPath;
-          console.log(this.urlPath);
-        });
+        (urlPath) => { this.urlPath = urlPath; });
   }
 
   ngOnDestroy() {
