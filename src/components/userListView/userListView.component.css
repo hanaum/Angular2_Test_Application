@@ -4,6 +4,7 @@ section#userlist {
 
 #list-section-title {
   text-align: center;
+  font-size: 1.750em;
 }
 
 .userlist-container {
@@ -13,11 +14,10 @@ section#userlist {
 
 .userlist-card {
   display: inline-block;
-  margin: 3.125em;
-  background-color: white;
+  margin: 1.250em 3.125em;
+  background-color: #f2f2f2;
   padding: 0.625em;
   border-radius: 5px;
-  border: 2px solid black;
 }
 
 .list, .userlist-card {
