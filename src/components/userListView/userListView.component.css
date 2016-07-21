@@ -40,6 +40,23 @@ section#userlist {
   animation-duration: 0.7s;
 }
 
+.btn-remove {
+  border: 2px solid #ff6666;
+  border-radius: 5px;
+  color: #ff6666;
+  cursor: pointer;
+  background-color: transparent;
+  -webkit-transition-property: all; /* Safari */
+  -webkit-transition-duration: .3s; /* Safari */
+  transition-property: all;
+  transition-duration: .3s;
+}
+
+.btn-remove:hover {
+  background-color: #ff6666;
+  color: white;
+}
+
 @-webkit-keyframes list-name-fadein {
   0%   { opacity: 0; }
   100% { opacity: 1; }
