@@ -2,11 +2,11 @@
   <div class="userlist-container">
     <h1 id="list-section-title">Your lists</h1>
     <div *ngFor="let list of taskLists" class="userlist-card">
-      <div *ngIf="list | async">
-        <a [routerLink] = "['/list/',  (list| async)?.$key]">
+      <div *ngIf="list| async">
+        <a [routerLink] = "['/list/', (list| async)?.$key]">
           <h1 class="list">{{(list| async)?.name}}</h1>
         </a>
-        <button class="btn-remove">Remove</button>
+        <task-remove-button [id] = "(list| async).$key"></task-remove-button>
       </div>
     </div>
   </div>
