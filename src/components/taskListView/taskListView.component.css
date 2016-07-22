@@ -2,8 +2,18 @@ hr {
   border-top: 1px solid black;
   border-bottom: 1px solid black;
   margin: 0 2.5em;
+  transition: all .5s linear;
+  -o-transition: all .5s linear;
+  -moz-transition: all .5s linear;
+  -webkit-transition: all .5s linear;
 }
 
 .container-section {
   padding: 2.250em;
+}
+
+@media (max-width: 790px) {
+  hr {
+    display: none;
+  }
 }
