@@ -1,0 +1,16 @@
+.btn-remove {
+  border: 2px solid #ff6666;
+  border-radius: 5px;
+  color: #ff6666;
+  background-color: transparent;
+  font-size: 0.750em;
+  -webkit-transition-property: all; /* Safari */
+  -webkit-transition-duration: .3s; /* Safari */
+  transition-property: all;
+  transition-duration: .3s;
+}
+
+.btn-remove:hover {
+  color: white;
+  background-color: #ff6666;
+}

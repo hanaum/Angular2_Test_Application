@@ -1,0 +1,17 @@
+@media (max-width: 790px) {
+  .logo {
+    display: block;
+    text-align: center;
+  }
+  .nav-links {
+    display: block;
+    text-align: center;
+    position: inherit;
+    float: none;
+    margin-top: 0.625em;
+  }
+  .btn-nav {
+    margin-left: 0;
+    font-size: 1em;
+  }
+}
