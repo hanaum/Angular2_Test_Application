@@ -1,16 +1,16 @@
 section#homepage {
   text-align: center;
   margin: 14% 0;
-  transition: all .8s linear;
-  -o-transition: all .8s linear;
-  -moz-transition: all .8s linear;
-  -webkit-transition: all .8s linear;
 }
 
 #home-logo {
   font-family: 'Bungee Shade', sans-serif;
   font-size: 100px;
   color: white;
+  transition: all .5s linear;
+  -o-transition: all .5s linear;
+  -moz-transition: all .5s linear;
+  -webkit-transition: all .5s linear;
 }
 
 .home-mottos h3 {
@@ -44,6 +44,10 @@ hr {
   border-radius: 10px;
   background-color: transparent;
   color: white;
+  transition: all .5s linear;
+  -o-transition: all .5s linear;
+  -moz-transition: all .5s linear;
+  -webkit-transition: all .5s linear;
 }
 
 .btn-homepage:hover {
@@ -62,7 +66,6 @@ hr {
 
 .fadeleft {
   width: 280px;
-
   -webkit-animation: fade-left .5s ; /* Chrome, Safari, Opera */
   animation: fade-left .5s ;
 }
@@ -88,7 +91,7 @@ hr {
   width: 200px;
 
   -moz-animation-name: list-name-fadein;
-  -moz-animation-iteration-count: 1;
+  -moz-animation-iteration-count: 1;x
   -moz-animation-timing-function: ease-in;
   -moz-animation-duration: .2s;
 
@@ -118,4 +121,13 @@ hr {
 @keyframes list-name-fadein {
   0%   { opacity: 0; }
   100% { opacity: 1; }
+}
+
+@media (max-width: 767px) {
+  #home-logo {
+    font-size: 3.125em;
+  }
+  .btn-homepage {
+    margin-top: 1.250em;
+  }
 }
