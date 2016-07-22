@@ -5,12 +5,13 @@ import {Subscription} from 'rxjs/Rx';
 
 import {AuthenticationService} from '../../services/authentication.service';
 import {TaskListService} from '../../services/taskList.service';
+import {TaskRemoveButtonComponent} from "../taskRemoveButton/taskRemoveButton.component";
 
 @Component({
   selector: 'user-lists',
   template: require('./userListView.component.html'),
   styles: [require('./userListView.component.css')],
-  directives: [ROUTER_DIRECTIVES],
+  directives: [ROUTER_DIRECTIVES, TaskRemoveButtonComponent],
   providers: [TaskListService as any]
 })
 

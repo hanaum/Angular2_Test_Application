@@ -4,6 +4,7 @@ section#userlist {
 
 #list-section-title {
   text-align: center;
+  font-size: 1.750em;
 }
 
 .userlist-container {
@@ -13,11 +14,10 @@ section#userlist {
 
 .userlist-card {
   display: inline-block;
-  margin: 3.125em;
-  background-color: white;
+  margin: 1.250em 3.125em;
+  background-color: #f2f2f2;
   padding: 0.625em;
   border-radius: 5px;
-  border: 2px solid black;
 }
 
 .list, .userlist-card {
@@ -38,6 +38,23 @@ section#userlist {
   animation-iteration-count: 1;
   animation-timing-function: ease-in;
   animation-duration: 0.7s;
+}
+
+.btn-remove {
+  border: 2px solid #ff6666;
+  border-radius: 5px;
+  color: #ff6666;
+  cursor: pointer;
+  background-color: transparent;
+  -webkit-transition-property: all; /* Safari */
+  -webkit-transition-duration: .3s; /* Safari */
+  transition-property: all;
+  transition-duration: .3s;
+}
+
+.btn-remove:hover {
+  background-color: #ff6666;
+  color: white;
 }
 
 @-webkit-keyframes list-name-fadein {
