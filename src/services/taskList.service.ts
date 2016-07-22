@@ -68,7 +68,6 @@ export class TaskListService {
   }
 
   public removeTaskList(id: string, userId: string) {
-    console.log(id, userId);
     let instructions = this.generateRemoveTaskListInstructions(id, userId);
     this.angularFire.database.object('').update(instructions);
   }
@@ -82,7 +81,7 @@ export class TaskListService {
   private generateRemoveTaskListInstructions(id: string, userId: string): Map<any, any> {
     let update = new Map();
     update[TASK_LIST_METADATA_PATH + '/' + id] = null;
-    update['task_list' + '/' + id] = null;
+    update['task_list/' + id] = null;
     if (userId != null) {
       update['users/' + userId + '/task_lists/' + id] = null;
     }

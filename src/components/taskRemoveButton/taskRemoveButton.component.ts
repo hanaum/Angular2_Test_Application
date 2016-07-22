@@ -1,4 +1,5 @@
 import {Component, Input} from '@angular/core';
+
 import {AuthenticationService} from '../../services/authentication.service';
 import {TaskListService} from '../../services/taskList.service';
 

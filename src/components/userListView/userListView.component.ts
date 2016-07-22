@@ -42,12 +42,4 @@ export class UserListViewComponent implements OnInit {
       this.taskListsSubscription.unsubscribe();
     }
   }
-
-  /**
-   *
-   * @param listIndex
-   */
-  removeList(listId: string) {
-    this.taskListService.removeTaskList(listId, this.authenticationService.getUserId());
-  }
 }
