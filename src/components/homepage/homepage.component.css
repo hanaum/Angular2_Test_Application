@@ -91,7 +91,7 @@ hr {
   width: 200px;
 
   -moz-animation-name: list-name-fadein;
-  -moz-animation-iteration-count: 1;x
+  -moz-animation-iteration-count: 1;
   -moz-animation-timing-function: ease-in;
   -moz-animation-duration: .2s;
 
