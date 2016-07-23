@@ -24,4 +24,14 @@ export class RoutingService {
     let link: string[] = ['/list', listId];
     this.router.navigate(link);
   }
+
+  public navigateToUserlist() {
+    let link: string[] = ['/userlist'];
+    this.router.navigate(link);
+  }
+
+  public navigateToHomepage() {
+    let link: string[] = [''];
+    this.router.navigate(link);
+  }
 }

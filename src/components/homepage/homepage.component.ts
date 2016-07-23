@@ -43,7 +43,7 @@ export class HomepageComponent implements OnInit {
 
   login() {
     this.authenticationService.login();
-    this.router.navigate(['/userlist']);
+    this.routingService.navigateToUserlist();
   }
 
   logout() { this.authenticationService.logout(); }
