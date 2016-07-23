@@ -44,7 +44,7 @@ export class NavbarComponent implements OnInit {
     this.urlPathSubscription.unsubscribe();
   }
 
-  private navigateToList() {  // tslint:disable-line
+  private navigateAndCreateList() {  // tslint:disable-line
     let uuid: string = this.authenticationService.getUserId();
     let listId: string = this.taskListService.createNewTaskList(uuid);
     this.routingService.navigateToList(listId);
