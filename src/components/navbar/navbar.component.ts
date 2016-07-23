@@ -5,12 +5,14 @@ import {Subscription} from 'rxjs/Rx';
 import {AuthenticationService, AuthenticationState} from '../../services/authentication.service';
 import {RoutingService} from '../../services/routing.service';
 import {UrlModalComponent} from '../urlModal/urlModal.component';
+import {TaskListService} from "../../services/taskList.service";
 
 @Component({
   selector: 'nav-bar',
   template: require('./navbar.component.html'),
   styles: [require('./navbar.component.css'), require('./navbar-responsive.component.css')],
-  directives: [ROUTER_DIRECTIVES, UrlModalComponent as any]
+  directives: [ROUTER_DIRECTIVES, UrlModalComponent as any],
+  providers: [TaskListService]
 })
 
 /**
@@ -26,6 +28,7 @@ export class NavbarComponent implements OnInit {
   private urlPathSubscription: Subscription;
 
   constructor(
+      private taskListService: TaskListService,
       private authenticationService: AuthenticationService,
       private routingService: RoutingService) {}
 
@@ -39,6 +42,12 @@ export class NavbarComponent implements OnInit {
   ngOnDestroy() {
     this.loginSubscription.unsubscribe();
     this.urlPathSubscription.unsubscribe();
+  }
+
+  private navigateAndCreateList() {  // tslint:disable-line
+    let uuid: string = this.authenticationService.getUserId();
+    let listId: string = this.taskListService.createNewTaskList(uuid);
+    this.routingService.navigateToList(listId);
   }
 
   login() { this.authenticationService.login(); }
