@@ -4,8 +4,8 @@ import {Subscription} from 'rxjs/Rx';
 
 import {AuthenticationService, AuthenticationState} from '../../services/authentication.service';
 import {RoutingService} from '../../services/routing.service';
+import {TaskListService} from '../../services/taskList.service';
 import {UrlModalComponent} from '../urlModal/urlModal.component';
-import {TaskListService} from "../../services/taskList.service";
 
 @Component({
   selector: 'nav-bar',
