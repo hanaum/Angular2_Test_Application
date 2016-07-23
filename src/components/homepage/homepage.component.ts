@@ -39,7 +39,10 @@ export class HomepageComponent implements OnInit {
     this.routingService.navigateToList(listId);
   }
 
-  login() { this.authenticationService.login(); }
+  login() {
+    this.authenticationService.login();
+    this.routingService.navigateToUserlist();
+  }
 
   logout() { this.authenticationService.logout(); }
 }
