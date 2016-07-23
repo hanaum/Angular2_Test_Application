@@ -5,7 +5,8 @@
   </div>
   <div class="nav-links">
     <button class="btn-nav" data-toggle="modal" data-target="#urlModal" *ngIf="urlPath !== 'choosetogo.hanaum.com/#/userlist'">Share</button>
-    <button class="btn-nav" *ngIf="urlPath !== 'choosetogo.hanaum.com/#/userlist'" [routerLink]="['/userlist']">Your Lists</button>
+    <button class="btn-nav" *ngIf="(urlPath !== 'choosetogo.hanaum.com/#/userlist') && (loggedIn == authenticationState.LOGGED_IN)" [routerLink]="['/userlist']">Your Lists</button>
+    <button class="btn-nav" *ngIf="urlPath === 'choosetogo.hanaum.com/#/userlist'" (click)="navigateToList()">Create New List</button>
     <button *ngIf="loggedIn === authenticationState.LOGGED_OUT" (click)="login()" class="btn-nav">Login</button>
     <button *ngIf="loggedIn === authenticationState.LOGGED_IN" (click)="logout()" class="btn-nav">Logout</button>
   </div>
