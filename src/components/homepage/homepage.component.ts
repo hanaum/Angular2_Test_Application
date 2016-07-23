@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Subscription} from 'rxjs/Rx';
+import {Router} from "@angular/router";
 
 import {AuthenticationService, AuthenticationState} from '../../services/authentication.service';
 import {RoutingService} from '../../services/routing.service';
@@ -22,6 +23,7 @@ export class HomepageComponent implements OnInit {
   private loginSubscription: Subscription;
 
   constructor(
+      private router: Router,
       private taskListService: TaskListService,
       private authenticationService: AuthenticationService,
       private routingService: RoutingService) {}
@@ -39,7 +41,10 @@ export class HomepageComponent implements OnInit {
     this.routingService.navigateToList(listId);
   }
 
-  login() { this.authenticationService.login(); }
+  login() {
+    this.authenticationService.login();
+    this.router.navigate(['/userlist']);
+  }
 
   logout() { this.authenticationService.logout(); }
 }
