@@ -18,7 +18,8 @@ thead {
 }
 
 th {
-  padding: 5px 0;
+  padding: 5px 10px;
+  text-align: center;
 }
 
 i.fa-plus {
@@ -122,4 +123,8 @@ i.fa-plus {
 .edit-input {
   border: transparent;
   border-radius: 10px;
+}
+
+.table-sort-category {
+  cursor: pointer;
 }

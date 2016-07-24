@@ -120,6 +120,18 @@ export class TaskListComponent implements OnInit {
     });
   }
 
+  private sortTasksByPriority() {
+    this.tasks.sort((a, b) => {
+      if (a.priority < b.priority) {
+        return -1;
+      } else if (a.name === b.name) {
+        return 0;
+      } else {
+        return 1;
+      }
+    });
+  }
+
   private reverseSortTasksByName() {
     this.tasks.sort((a, b) => {
       if (a.name < b.name) {
