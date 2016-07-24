@@ -13,22 +13,22 @@ import {TaskItem} from '../../services/taskItem';
  * MapComponent renders the map of TaskItems.
  */
 export class MapComponent implements OnInit {
+  // TOOD figure out how to trigger function on new Input and replace below with TaskItem[];
   @Input() private tasks: FirebaseListObservable<any[]>;
-  private geocoder: google.maps.Geocoder;
   private markers: google.maps.Marker[];
   private map: google.maps.Map;
   private taskSubscription: Subscription;
 
-  constructor() {
-    this.geocoder = new google.maps.Geocoder();
-    this.markers = [];
-  }
+  constructor() { this.markers = []; }
 
   ngOnInit() {
     this.map = new google.maps.Map(
         document.getElementById('map'), {zoom: 1, center: {lat: -34.397, lng: 150.644}});
 
-    this.taskSubscription = this.tasks.subscribe((tasks) => { this.updateMap(tasks); });
+    this.taskSubscription = this.tasks.subscribe((tasks) => {
+      console.log(tasks);
+      this.updateMap(tasks);
+    });
   }
 
   ngOnDestroy() { this.taskSubscription.unsubscribe(); }
@@ -37,16 +37,12 @@ export class MapComponent implements OnInit {
     this.resetMarkers();
     let bounds = new google.maps.LatLngBounds();
     tasks.forEach((location) => {
-      if (location.placeId) {
-        this.geocoder.geocode({'placeId': location.placeId}, (results, status) => {
-          if (status === google.maps.GeocoderStatus.OK && results[0].geometry.location) {
-            let marker =
-                new google.maps.Marker({map: this.map, position: results[0].geometry.location});
-            this.markers.push(marker);
-            bounds.extend(marker.getPosition());
-            this.map.fitBounds(bounds);
-          }
-        });
+      if (location.lat && location.lng) {
+        let marker = new google.maps.Marker(
+            {map: this.map, position: new google.maps.LatLng(location.lat, location.lng)});
+        this.markers.push(marker);
+        bounds.extend(marker.getPosition());
+        this.map.fitBounds(bounds);
       }
     });
   }
