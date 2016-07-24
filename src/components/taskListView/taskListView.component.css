@@ -10,10 +10,21 @@ hr {
 
 .container-section {
   padding: 2.250em;
+  text-align: center;
+  transition: all .5s linear;
+  -o-transition: all .5s linear;
+  -moz-transition: all .5s linear;
+  -webkit-transition: all .5s linear;
 }
 
 @media (max-width: 790px) {
   hr {
     display: none;
+  }
+}
+
+@media (max-width: 424px) {
+  .container-section {
+    padding: 2.250em 0;
   }
 }

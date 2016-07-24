@@ -6,10 +6,12 @@ hr {
 }
 
 table {
-  text-align: left;
+  text-align: center;
   width: 100%;
   border-collapse: collapse;
-  border-spacing:5px 5px;
+  border-spacing: 5px 5px;
+  border-bottom: 1px solid white;
+  margin-bottom: 1.250em;
 }
 
 thead {
@@ -39,7 +41,7 @@ i.fa-plus {
 
 .content-title {
   display: inline-block;
-  width: 40%;
+  width: 100%;
 }
 
 .list-header h1 {
@@ -54,7 +56,7 @@ i.fa-plus {
   color: white;
   background-color: transparent;
   border: 2px solid white;
-  border-radius: 10px;
+  border-radius: 5px;
   font-weight: 800;
   bottom: 4px;
   margin-left: 0.750em;
@@ -73,10 +75,6 @@ i.fa-plus {
   background-color: white;
 }
 
-.edit-focus {
-  background-color: pink;
-}
-
 .add-new-btn {
   cursor: pointer;
   float: right;
@@ -84,7 +82,7 @@ i.fa-plus {
   color: white;
   background-color: transparent;
   border: 2px solid white;
-  border-radius: 10px;
+  border-radius: 5px;
   height: 30px;
   font-size: 1.375em;
   padding: 2px 6px 4px 6px;
@@ -99,11 +97,22 @@ i.fa-plus {
   background-color: white;
 }
 
-.btn-visited, .btn-remove {
-  border: 2px solid white;
-  border-radius: 10px;
+.btn-visited {
+  border: none;
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  color: #00bfff;
+  -webkit-transition-property: all; /* Safari */
+  -webkit-transition-duration: .3s; /* Safari */
+  transition-property: all;
+  transition-duration: .3s;
+}
+
+.btn-remove {
+  border: none;
+  border-radius: 5px;
+  background-color: #ffb3b3;
   color: white;
-  background-color: transparent;
   -webkit-transition-property: all; /* Safari */
   -webkit-transition-duration: .3s; /* Safari */
   transition-property: all;
@@ -111,20 +120,50 @@ i.fa-plus {
 }
 
 .btn-visited:hover {
-  border: 2px solid #c6ffb3;
-  color: #c6ffb3;
+  background-color: white;
 }
 
 .btn-remove:hover {
-  border: 2px solid #ffb3b3;
-  color: #ffb3b3;
+  background-color: #ff8080;
 }
 
 .edit-input {
   border: transparent;
-  border-radius: 10px;
+  border-radius: 5px;
 }
 
 .table-sort-category {
   cursor: pointer;
+}
+
+@media (max-width: 730px) {
+  table {
+    font-size: 0.750em;
+  }
+
+  th {
+    padding: 5px 3px;
+  }
+
+  i.fa-plus {
+    bottom: 0;
+  }
+}
+
+@media (max-width: 540px) {
+  .btn-visited, .btn-remove {
+    display: block;
+    margin: 1px auto;
+    width: 4.750em;
+  }
+
+  .btn-visited {
+    background-color: white;
+    color: #00bfff;
+  }
+
+  .btn-remove {
+    background-color: #ffb3b3;
+    color: white;
+  }
 }
