@@ -7,12 +7,13 @@ import {AuthenticationService} from '../../services/authentication.service';
 import {TaskItem} from '../../services/taskItem';
 import {TaskListService} from '../../services/taskList.service';
 import {AddTaskComponent} from '../addTask/addTask.component';
+import {MapComponent} from '../map/map.component';
 
 @Component({
   selector: 'task-list',
   template: require('./taskList.component.html'),
   styles: [require('./taskList.component.css')],
-  directives: [AddTaskComponent as any],
+  directives: [AddTaskComponent as any, MapComponent as any],
   providers: [TaskListService]
 })
 
