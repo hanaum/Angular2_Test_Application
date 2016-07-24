@@ -59,6 +59,7 @@ export class TaskListComponent implements OnInit {
 
     this.tasksSubscription = this.tasksObservable.subscribe((tasks) => {
       this.tasks = tasks;
+      this.sortTasksByName();
       this.setDistances();
     });
   }
@@ -105,5 +106,29 @@ export class TaskListComponent implements OnInit {
         }
       });
     }
+  }
+
+  private sortTasksByName() {
+    this.tasks.sort((a, b) => {
+      if (a.name < b.name) {
+        return -1;
+      } else if (a.name === b.name) {
+        return 0;
+      } else {
+        return 1;
+      }
+    });
+  }
+
+  private reverseSortTasksByName() {
+    this.tasks.sort((a, b) => {
+      if (a.name < b.name) {
+        return 1;
+      } else if (a.name === b.name) {
+        return 0;
+      } else {
+        return -1;
+      }
+    });
   }
 }
