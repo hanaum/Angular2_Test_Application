@@ -6,10 +6,10 @@ hr {
 }
 
 table {
-  text-align: left;
+  text-align: center;
   width: 100%;
   border-collapse: collapse;
-  border-spacing:5px 5px;
+  border-spacing: 5px 5px;
 }
 
 thead {
@@ -39,7 +39,7 @@ i.fa-plus {
 
 .content-title {
   display: inline-block;
-  width: 40%;
+  width: 100%;
 }
 
 .list-header h1 {
@@ -101,7 +101,7 @@ i.fa-plus {
 
 .btn-visited, .btn-remove {
   border: 2px solid white;
-  border-radius: 10px;
+  border-radius: 5px;
   color: white;
   background-color: transparent;
   -webkit-transition-property: all; /* Safari */
@@ -122,9 +122,39 @@ i.fa-plus {
 
 .edit-input {
   border: transparent;
-  border-radius: 10px;
+  border-radius: 5px;
 }
 
 .table-sort-category {
   cursor: pointer;
+}
+
+@media (max-width: 730px) {
+  table {
+    font-size: 0.750em;
+  }
+
+  th {
+    padding: 5px 3px;
+  }
+}
+
+@media (max-width: 540px) {
+  .btn-visited, .btn-remove {
+    display: block;
+    margin: 1px auto;
+    border: 1px solid white;
+    width: 4.750em;
+  }
+
+  .btn-visited {
+    background-color: white;
+    color: #00bfff;
+  }
+
+  .btn-remove {
+    border-color: #ffb3b3;
+    background-color: #ffb3b3;
+    color: white;
+  }
 }
