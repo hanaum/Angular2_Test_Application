@@ -25,10 +25,7 @@ export class MapComponent implements OnInit {
     this.map = new google.maps.Map(
         document.getElementById('map'), {zoom: 1, center: {lat: -34.397, lng: 150.644}});
 
-    this.taskSubscription = this.tasks.subscribe((tasks) => {
-      console.log(tasks);
-      this.updateMap(tasks);
-    });
+    this.taskSubscription = this.tasks.subscribe((tasks) => { this.updateMap(tasks); });
   }
 
   ngOnDestroy() { this.taskSubscription.unsubscribe(); }
