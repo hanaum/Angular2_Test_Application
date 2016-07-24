@@ -10,6 +10,8 @@ table {
   width: 100%;
   border-collapse: collapse;
   border-spacing: 5px 5px;
+  border-bottom: 1px solid white;
+  margin-bottom: 1.250em;
 }
 
 thead {
@@ -73,10 +75,6 @@ i.fa-plus {
   background-color: white;
 }
 
-.edit-focus {
-  background-color: pink;
-}
-
 .add-new-btn {
   cursor: pointer;
   float: right;
@@ -99,11 +97,22 @@ i.fa-plus {
   background-color: white;
 }
 
-.btn-visited, .btn-remove {
-  border: 2px solid white;
+.btn-visited {
+  border: none;
   border-radius: 5px;
+  background-color: #f2f2f2;
+  color: #00bfff;
+  -webkit-transition-property: all; /* Safari */
+  -webkit-transition-duration: .3s; /* Safari */
+  transition-property: all;
+  transition-duration: .3s;
+}
+
+.btn-remove {
+  border: none;
+  border-radius: 5px;
+  background-color: #ffb3b3;
   color: white;
-  background-color: transparent;
   -webkit-transition-property: all; /* Safari */
   -webkit-transition-duration: .3s; /* Safari */
   transition-property: all;
@@ -111,13 +120,11 @@ i.fa-plus {
 }
 
 .btn-visited:hover {
-  border: 2px solid #c6ffb3;
-  color: #c6ffb3;
+  background-color: white;
 }
 
 .btn-remove:hover {
-  border: 2px solid #ffb3b3;
-  color: #ffb3b3;
+  background-color: #ff8080;
 }
 
 .edit-input {
@@ -147,7 +154,6 @@ i.fa-plus {
   .btn-visited, .btn-remove {
     display: block;
     margin: 1px auto;
-    border: 1px solid white;
     width: 4.750em;
   }
 
@@ -157,7 +163,6 @@ i.fa-plus {
   }
 
   .btn-remove {
-    border-color: #ffb3b3;
     background-color: #ffb3b3;
     color: white;
   }
