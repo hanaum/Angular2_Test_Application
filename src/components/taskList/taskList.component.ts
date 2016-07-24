@@ -59,6 +59,7 @@ export class TaskListComponent implements OnInit {
 
     this.tasksSubscription = this.tasksObservable.subscribe((tasks) => {
       this.tasks = tasks;
+      this.sortTasksByName();
       this.setDistances();
     });
   }
@@ -105,5 +106,65 @@ export class TaskListComponent implements OnInit {
         }
       });
     }
+  }
+
+  private sortTasksByName() {
+    this.tasks.sort((a, b) => {
+      if (a.name < b.name) {
+        return -1;
+      } else if (a.name === b.name) {
+        return 0;
+      } else {
+        return 1;
+      }
+    });
+  }
+
+  private sortTasksByPriority() {
+    this.tasks.sort((a, b) => {
+      if (a.priority < b.priority) {
+        return -1;
+      } else if (a.priority === b.priority) {
+        return 0;
+      } else {
+        return 1;
+      }
+    });
+  }
+
+  private sortTasksByDistance() {
+    this.tasks.sort((a, b) => {
+      if (a.distance.value < b.distance.value) {
+        return -1;
+      } else if (a.distance.value === b.distance.value) {
+        return 0;
+      } else {
+        return 1;
+      }
+    });
+  }
+
+  private sortTasksByDuration() {
+    this.tasks.sort((a, b) => {
+      if (a.duration.value < b.duration.value) {
+        return -1;
+      } else if (a.duration.value === b.duration.value) {
+        return 0;
+      } else {
+        return 1;
+      }
+    });
+  }
+
+  private reverseSortTasksByName() {
+    this.tasks.sort((a, b) => {
+      if (a.name < b.name) {
+        return 1;
+      } else if (a.name === b.name) {
+        return 0;
+      } else {
+        return -1;
+      }
+    });
   }
 }
