@@ -29,7 +29,7 @@
       </thead>
       <tbody>
         <tr *ngFor="let task of tasks">
-          <th><div class="line" *ngIf="task.visited"></div>{{task.name}}</th>
+          <th><div class="over-line" *ngIf="task.visited"></div>{{task.name}}</th>
           <th>{{task.priority}}</th>
           <th>{{task.distance ? task.distance.text : ''}}</th>
           <th>{{task.duration ? task.duration.text : ''}}</th>
