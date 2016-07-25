@@ -35,6 +35,7 @@ export class AddTaskComponent implements OnInit {
     let lat = details ? details.geometry.location.lat() : null;
     let lng = details ? details.geometry.location.lng() : null;
 
-    this.taskEmitter.emit(new TaskItem(name, priority, description, placeId, lat, lng, null, null));
+    this.taskEmitter.emit(
+        new TaskItem(name, priority, description, false, placeId, lat, lng, null, null));
   }
 }
