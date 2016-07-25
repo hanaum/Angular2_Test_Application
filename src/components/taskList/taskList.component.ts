@@ -84,6 +84,9 @@ export class TaskListComponent implements OnInit {
     this.listName.set(newName);
     this.isInputFocused = !this.isInputFocused;
   }
+  private locationVisited(locationId: string) {
+    this.tasksObservable.update(locationId, {visited: true});
+  }
 
   private setDistances() {
     if (this.tasks && this.currentPosition) {

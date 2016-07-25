@@ -29,13 +29,13 @@
       </thead>
       <tbody>
         <tr *ngFor="let task of tasks">
-          <th>{{task.name}}</th>
+          <th><div class="line" *ngIf="task.visited"></div>{{task.name}}</th>
           <th>{{task.priority}}</th>
           <th>{{task.distance ? task.distance.text : ''}}</th>
           <th>{{task.duration ? task.duration.text : ''}}</th>
           <th>
             <div class="list-actions">
-              <button class="btn-visited">Visited</button>
+              <button *ngIf="!task.visited" class="btn-visited" (click)="locationVisited(task.$key)">Visited</button>
               <button (click)="removeTask(task.$key)" class="btn-remove">Remove</button>
             </div>
           </th>

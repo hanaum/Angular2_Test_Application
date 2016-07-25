@@ -6,6 +6,7 @@ export class TaskItem {
       public name: string,
       public priority: number,
       public description: string,
+      public visited: boolean,
       public placeId?: string,
       public lat?: number,
       public lng?: number,

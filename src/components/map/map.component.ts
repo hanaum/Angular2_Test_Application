@@ -34,7 +34,7 @@ export class MapComponent implements OnInit {
     this.resetMarkers();
     let bounds = new google.maps.LatLngBounds();
     tasks.forEach((location) => {
-      if (location.lat && location.lng) {
+      if ((location.lat && location.lng) && !location.visited) {
         let marker = new google.maps.Marker(
             {map: this.map, position: new google.maps.LatLng(location.lat, location.lng)});
         this.markers.push(marker);
