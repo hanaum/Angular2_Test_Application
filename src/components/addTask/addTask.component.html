@@ -14,8 +14,8 @@
             <input type="text" class="form-control" #name name="name" id="add-task-name" required>
           </div>
           <div class="form-group">
-            <label for="add-task-priority">Priority</label>
-            <input type="text" class="form-control" #priority name="priority" id="add-task-priority" required>
+            <label for="add-task-priority">Priority (1 to 5)</label>
+            <input type="number" class="form-control" min="1" max="5" #priority name="priority" id="add-task-priority" required>
           </div>
           <div class="form-group">
             <label for="add-task-description">Description</label>
