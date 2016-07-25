@@ -10,7 +10,6 @@ table {
   width: 100%;
   border-collapse: collapse;
   border-spacing: 5px 5px;
-  border-bottom: 1px solid white;
   margin-bottom: 1.250em;
 }
 
@@ -27,6 +26,14 @@ th {
 i.fa-plus {
   position: relative;
   bottom: 4px;
+}
+
+.table-container {
+  margin-bottom: 1.250em;
+  height: 320px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  border-bottom: 1px solid white;
 }
 
 .list-title {
