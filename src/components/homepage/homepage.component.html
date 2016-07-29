@@ -6,8 +6,8 @@
     <h3><span class="home-highlight">Choose</span> your destination</h3>
   </div>
   <div class="inline-block">
-    <button class="btn-homepage fadeleft" (click)="navigateToList()" ><h3>Create a List!</h3></button>
-    <div class="inline-block" [ngSwitch]="loggedIn">
+    <button class="btn-homepage fadeleft" (click)="navigateToList()"><h3>Create a List!</h3></button>
+    <div [ngSwitch]="loggedIn" class="inline-block">
       <button *ngSwitchCase="authenticationState.UNKNOWN" class="btn-homepage temp"><h3>Login!</h3></button>
       <button *ngSwitchCase="authenticationState.LOGGED_OUT" class="btn-homepage fadein" (click)="login()" ><h3>Login!</h3></button>
       <button *ngSwitchCase="authenticationState.LOGGED_IN" class="btn-homepage fadein" (click)="logout()" ><h3>Logout</h3></button>

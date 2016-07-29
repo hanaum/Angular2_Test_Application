@@ -1,14 +1,14 @@
 <nav *ngIf="urlPath !== 'choosetogo.hanaum.com/#/'">
   <div class="logo">
-    <h1><a id="homepage-link-logo" [routerLink]="['']">Choose To Go</a></h1>
+    <h1><a [routerLink]="['']" id="homepage-link-logo">Choose To Go</a></h1>
     <p class="motto text-center">A simple and clean way to plan your trips</p>
   </div>
   <div class="nav-links">
-    <button class="btn-nav" data-toggle="modal" data-target="#urlModal" *ngIf="urlPath !== 'choosetogo.hanaum.com/#/userlist'">Share</button>
-    <button class="btn-nav" *ngIf="(urlPath !== 'choosetogo.hanaum.com/#/userlist') && (loggedIn == authenticationState.LOGGED_IN)" [routerLink]="['/userlist']">Your Lists</button>
-    <button class="btn-nav" *ngIf="urlPath === 'choosetogo.hanaum.com/#/userlist'" (click)="navigateAndCreateList()">Create New List</button>
-    <button *ngIf="loggedIn === authenticationState.LOGGED_OUT" (click)="login()" class="btn-nav">Login</button>
-    <button *ngIf="loggedIn === authenticationState.LOGGED_IN" (click)="logout()" class="btn-nav">Logout</button>
+    <button *ngIf="urlPath !== 'choosetogo.hanaum.com/#/userlist'" class="btn-nav" data-toggle="modal" data-target="#urlModal">Share</button>
+    <button *ngIf="(urlPath !== 'choosetogo.hanaum.com/#/userlist') && (loggedIn == authenticationState.LOGGED_IN)" [routerLink]="['/userlist']" class="btn-nav">Your Lists</button>
+    <button *ngIf="urlPath === 'choosetogo.hanaum.com/#/userlist'" class="btn-nav" (click)="navigateAndCreateList()">Create New List</button>
+    <button *ngIf="loggedIn === authenticationState.LOGGED_OUT" class="btn-nav" (click)="login()">Login</button>
+    <button *ngIf="loggedIn === authenticationState.LOGGED_IN" class="btn-nav" (click)="logout()">Logout</button>
   </div>
 </nav>
 <url-modal [url]="urlPath"></url-modal>

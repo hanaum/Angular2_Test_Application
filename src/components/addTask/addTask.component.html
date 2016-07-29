@@ -11,15 +11,15 @@
         <div class="modal-body ">
           <div class="form-group">
             <label for="add-task-name">Name</label>
-            <input type="text" class="form-control" #name name="name" id="add-task-name" required>
+            <input type="text" class="form-control" id="add-task-name" name="name" #name required>
           </div>
           <div class="form-group">
             <label for="add-task-priority">Priority (1 - 5)</label>
-            <input type="number" class="form-control" min="1" max="5" #priority name="priority" id="add-task-priority" required>
+            <input type="number" class="form-control" id="add-task-priority" name="priority" min="1" max="5" #priority required>
           </div>
           <div class="form-group">
             <label for="add-task-description">Description</label>
-            <input type="text" class="form-control" #description name="description" id="add-task-description">
+            <input type="text" class="form-control" id="add-task-description" name="description" #description>
           </div>
         </div>
         <div class="modal-footer">
