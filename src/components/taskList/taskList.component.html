@@ -2,12 +2,12 @@
   <div class="list-header">
     <h1 class="display-inline">
       <span *ngIf="!isInputFocused" class="list-title">{{(listName | async)?.$value}}</span>
-      <input [hidden]="!isInputFocused" #newName class="edit-input" type="text" name="name" id="name" placeholder="{{(listName | async)?.$value}}">
+      <input [hidden]="!isInputFocused" type="text" class="edit-input" id="name" name="name" placeholder="{{(listName | async)?.$value}}" #newName>
     </h1>
-    <button class="edit-btn display-inline list-title" *ngIf="!isInputFocused && isEditable" (click)="isInputFocused = !isInputFocused">
+    <button *ngIf="!isInputFocused && isEditable" class="edit-btn display-inline list-title" (click)="isInputFocused = !isInputFocused">
       Edit
     </button>
-    <button class="edit-btn display-inline list-title" *ngIf="isInputFocused" (click)="editListName(newName.value)">
+    <button *ngIf="isInputFocused" class="edit-btn display-inline list-title" (click)="editListName(newName.value)">
       Save
     </button>
   </div>
@@ -29,14 +29,14 @@
       </thead>
       <tbody>
         <tr *ngFor="let task of tasks">
-          <th><div class="over-line" *ngIf="task.visited"></div>{{task.name}}</th>
+          <th><div *ngIf="task.visited" class="over-line"></div>{{task.name}}</th>
           <th>{{task.priority}}</th>
           <th>{{task.distance ? task.distance.text : ''}}</th>
           <th>{{task.duration ? task.duration.text : ''}}</th>
           <th>
             <div class="list-actions">
               <button *ngIf="!task.visited" class="btn-visited" (click)="locationVisited(task.$key)">Visited</button>
-              <button (click)="removeTask(task.$key)" class="btn-remove">Remove</button>
+              <button class="btn-remove" (click)="removeTask(task.$key)">Remove</button>
             </div>
           </th>
         </tr>

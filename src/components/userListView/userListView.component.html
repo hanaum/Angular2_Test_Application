@@ -6,7 +6,7 @@
         <a [routerLink] = "['/list/', (list| async)?.$key]">
           <h1 class="list">{{(list| async)?.name}}</h1>
         </a>
-        <task-remove-button [id] = "(list| async).$key"></task-remove-button>
+        <task-remove-button [id]="(list| async).$key"></task-remove-button>
       </div>
     </div>
   </div>
