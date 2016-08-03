@@ -18,9 +18,10 @@ export class TaskListService {
   /**
    * @returns {string} id of newly created task list.
    */
-  public createNewTaskList(uuid: string): string {
+  public createNewTaskList(): string {
     let id = this.getNewTaskListID();
-    let update = this.generateCreateTaskListInstructions(id, uuid);
+    let userId = this.authenticationService.getUserId();
+    let update = this.generateCreateTaskListInstructions(id, userId);
 
     this.angularFire.database.object('').update(update);
     return id;
@@ -60,9 +61,10 @@ export class TaskListService {
   }
 
   // TODO There has to be a better way.
-  public getUserLists(uuidObservable: Observable<string>):
+  public getUserLists():
       Observable<Observable<FirebaseObjectObservable<any>[]>> {
-    return uuidObservable.map((uuid) => {
+    let userIdObservable: Observable<string> = this.authenticationService.observableUserId;
+    return userIdObservable.map((uuid) => {
       return this.angularFire.database.list('users/' + uuid + '/task_lists').map((taskLists) => {
         return taskLists.map((taskList) => {
           return this.angularFire.database.object(TASK_LIST_METADATA_PATH + '/' + taskList['$key']);

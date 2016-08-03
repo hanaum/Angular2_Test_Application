@@ -3,7 +3,6 @@ import {ROUTER_DIRECTIVES} from '@angular/router';
 import {FirebaseObjectObservable} from 'angularfire2/angularfire2';
 import {Subscription} from 'rxjs/Rx';
 
-import {AuthenticationService} from '../../services/authentication.service';
 import {TaskListService} from '../../services/taskList.service';
 import {TaskRemoveButtonComponent} from '../taskRemoveButton/taskRemoveButton.component';
 
@@ -21,12 +20,11 @@ export class UserListViewComponent implements OnInit {
   private taskListsSubscriptionSubscription: Subscription;
 
   constructor(
-      private authenticationService: AuthenticationService,
       private taskListService: TaskListService) {}
 
   ngOnInit() {
     this.taskListsSubscriptionSubscription =
-        this.taskListService.getUserLists(this.authenticationService.observableUserId)
+        this.taskListService.getUserLists()
             .subscribe((taskListsObservable) => {
               if (this.taskListsSubscription != null) {
                 this.taskListsSubscription.unsubscribe();

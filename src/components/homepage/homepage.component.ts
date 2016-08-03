@@ -34,8 +34,7 @@ export class HomepageComponent implements OnInit {
   ngOnDestroy() { this.loginSubscription.unsubscribe(); }
 
   private navigateToList() {  // tslint:disable-line
-    let uuid: string = this.authenticationService.getUserId();
-    let listId: string = this.taskListService.createNewTaskList(uuid);
+    let listId: string = this.taskListService.createNewTaskList();
     this.routingService.navigateToList(listId);
   }
 
