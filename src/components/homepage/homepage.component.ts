@@ -8,8 +8,7 @@ import {TaskListService} from '../../services/taskList.service';
 @Component({
   selector: 'homepage',
   template: require('./homepage.component.html'),
-  styles: [require('./homepage.component.css'), require('./homepage-responsive.component.css')],
-  providers: [TaskListService]
+  styles: [require('./homepage.component.css'), require('./homepage-responsive.component.css')]
 })
 
 /**

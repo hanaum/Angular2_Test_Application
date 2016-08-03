@@ -5,8 +5,7 @@ import {TaskListService} from '../../services/taskList.service';
 @Component({
   selector: 'task-remove-button',
   template: require('./taskRemoveButton.component.html'),
-  styles: [require('./taskRemoveButton.component.css')],
-  providers: [TaskListService as any],
+  styles: [require('./taskRemoveButton.component.css')]
 })
 
 export class TaskRemoveButtonComponent {

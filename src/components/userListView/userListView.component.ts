@@ -10,8 +10,7 @@ import {TaskRemoveButtonComponent} from '../taskRemoveButton/taskRemoveButton.co
   selector: 'user-lists',
   template: require('./userListView.component.html'),
   styles: [require('./userListView.component.css')],
-  directives: [ROUTER_DIRECTIVES, TaskRemoveButtonComponent],
-  providers: [TaskListService as any]
+  directives: [ROUTER_DIRECTIVES, TaskRemoveButtonComponent]
 })
 
 export class UserListViewComponent implements OnInit {

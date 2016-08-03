@@ -24,5 +24,6 @@ bootstrap(AppComponent as any, [
   disableDeprecatedForms(),
   provideForms(),
   AuthenticationService,
-  RoutingService
+  RoutingService,
+  TaskListService
 ]);
