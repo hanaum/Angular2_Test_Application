@@ -2,7 +2,6 @@ import {HashLocationStrategy, LocationStrategy} from '@angular/common';
 import {enableProdMode} from '@angular/core';
 import {disableDeprecatedForms, provideForms} from '@angular/forms';
 import {bootstrap} from '@angular/platform-browser-dynamic';
-import {MODAL_BROWSER_PROVIDERS} from 'angular2-modal/platform-browser';
 import {FIREBASE_PROVIDERS, defaultFirebase, firebaseAuthConfig} from 'angularfire2';
 
 import {AppComponent} from './components/app/app.component';
@@ -16,7 +15,6 @@ if (process.env.ENV === 'production') {
 }
 
 bootstrap(AppComponent as any, [
-  MODAL_BROWSER_PROVIDERS,
   FIREBASE_PROVIDERS,
   APP_ROUTER_PROVIDERS,
   {provide: LocationStrategy, useClass: HashLocationStrategy},

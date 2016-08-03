@@ -7,5 +7,5 @@ import '@angular/http';
 import '@angular/router';
 
 import 'rxjs';
-import 'angular2-modal/platform-browser';
 import 'angularfire2';
+import 'bootstrap'
