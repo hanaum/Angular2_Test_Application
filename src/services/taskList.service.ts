@@ -3,13 +3,17 @@ import {AngularFire, FirebaseListObservable, FirebaseObjectObservable} from 'ang
 import {Observable} from 'rxjs/Rx';
 
 import {TaskList} from './taskList';
+import {AuthenticationService} from "./authentication.service";
 
 const DEFAULT_TASK_LIST_NAME: string = 'New List';
 const TASK_LIST_METADATA_PATH: string = 'task_list_metadata';
 
 @Injectable()
 export class TaskListService {
-  constructor(private angularFire: AngularFire) {}
+  constructor(
+      private angularFire: AngularFire,
+      private authenticationService: AuthenticationService
+  ) {}
 
   /**
    * @returns {string} id of newly created task list.
@@ -67,7 +71,8 @@ export class TaskListService {
     });
   }
 
-  public removeTaskList(id: string, userId: string) {
+  public removeTaskList(id: string) {
+    let userId = this.authenticationService.getUserId();
     let instructions = this.generateRemoveTaskListInstructions(id, userId);
     this.angularFire.database.object('').update(instructions);
   }
