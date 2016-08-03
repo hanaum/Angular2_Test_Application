@@ -1,23 +1,17 @@
 import {Component, Input} from '@angular/core';
 
-import {AuthenticationService} from '../../services/authentication.service';
 import {TaskListService} from '../../services/taskList.service';
 
 @Component({
   selector: 'task-remove-button',
   template: require('./taskRemoveButton.component.html'),
-  styles: [require('./taskRemoveButton.component.css')],
-  providers: [TaskListService as any],
+  styles: [require('./taskRemoveButton.component.css')]
 })
 
 export class TaskRemoveButtonComponent {
   @Input() private id: string;
 
-  constructor(
-      private authenticationService: AuthenticationService,
-      private taskListService: TaskListService) {}
+  constructor(private taskListService: TaskListService) {}
 
-  removeList() {
-    this.taskListService.removeTaskList(this.id, this.authenticationService.getUserId());
-  }
+  removeList() { this.taskListService.removeTaskList(this.id); }
 }

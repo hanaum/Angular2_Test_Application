@@ -13,8 +13,7 @@ import {MapComponent} from '../map/map.component';
   selector: 'task-list',
   template: require('./taskList.component.html'),
   styles: [require('./taskList.component.css')],
-  directives: [AddTaskComponent as any, MapComponent as any],
-  providers: [TaskListService]
+  directives: [AddTaskComponent as any, MapComponent as any]
 })
 
 /**

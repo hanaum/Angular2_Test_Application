@@ -11,8 +11,7 @@ import {UrlModalComponent} from '../urlModal/urlModal.component';
   selector: 'nav-bar',
   template: require('./navbar.component.html'),
   styles: [require('./navbar.component.css'), require('./navbar-responsive.component.css')],
-  directives: [ROUTER_DIRECTIVES, UrlModalComponent as any],
-  providers: [TaskListService]
+  directives: [ROUTER_DIRECTIVES, UrlModalComponent as any]
 })
 
 /**
@@ -45,8 +44,7 @@ export class NavbarComponent implements OnInit {
   }
 
   private navigateAndCreateList() {  // tslint:disable-line
-    let uuid: string = this.authenticationService.getUserId();
-    let listId: string = this.taskListService.createNewTaskList(uuid);
+    let listId: string = this.taskListService.createNewTaskList();
     this.routingService.navigateToList(listId);
   }
 

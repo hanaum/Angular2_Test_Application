@@ -9,6 +9,7 @@ import {APP_ROUTER_PROVIDERS} from './components/app/app.routes';
 import {FIREBASE_AUTH_CONFIG, FIREBASE_CONFIG} from './configs/firebase.config';
 import {AuthenticationService} from './services/authentication.service';
 import {RoutingService} from './services/routing.service';
+import {TaskListService} from './services/taskList.service';
 
 if (process.env.ENV === 'production') {
   enableProdMode();
@@ -23,5 +24,6 @@ bootstrap(AppComponent as any, [
   disableDeprecatedForms(),
   provideForms(),
   AuthenticationService,
-  RoutingService
+  RoutingService,
+  TaskListService
 ]);

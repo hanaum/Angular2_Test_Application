@@ -8,4 +8,4 @@ import '@angular/router';
 
 import 'rxjs';
 import 'angularfire2';
-import 'bootstrap/dist/js/bootstrap.min.js'
+import 'bootstrap/dist/js/bootstrap.min.js';

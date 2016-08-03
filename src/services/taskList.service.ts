@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {AngularFire, FirebaseListObservable, FirebaseObjectObservable} from 'angularfire2/angularfire2';  // tslint:disable-line
 import {Observable} from 'rxjs/Rx';
 
+import {AuthenticationService} from './authentication.service';
 import {TaskList} from './taskList';
 
 const DEFAULT_TASK_LIST_NAME: string = 'New List';
@@ -9,14 +10,16 @@ const TASK_LIST_METADATA_PATH: string = 'task_list_metadata';
 
 @Injectable()
 export class TaskListService {
-  constructor(private angularFire: AngularFire) {}
+  constructor(
+      private angularFire: AngularFire, private authenticationService: AuthenticationService) {}
 
   /**
    * @returns {string} id of newly created task list.
    */
-  public createNewTaskList(uuid: string): string {
+  public createNewTaskList(): string {
     let id = this.getNewTaskListID();
-    let update = this.generateCreateTaskListInstructions(id, uuid);
+    let userId = this.authenticationService.getUserId();
+    let update = this.generateCreateTaskListInstructions(id, userId);
 
     this.angularFire.database.object('').update(update);
     return id;
@@ -56,9 +59,9 @@ export class TaskListService {
   }
 
   // TODO There has to be a better way.
-  public getUserLists(uuidObservable: Observable<string>):
-      Observable<Observable<FirebaseObjectObservable<any>[]>> {
-    return uuidObservable.map((uuid) => {
+  public getUserLists(): Observable<Observable<FirebaseObjectObservable<any>[]>> {
+    let userIdObservable: Observable<string> = this.authenticationService.observableUserId;
+    return userIdObservable.map((uuid) => {
       return this.angularFire.database.list('users/' + uuid + '/task_lists').map((taskLists) => {
         return taskLists.map((taskList) => {
           return this.angularFire.database.object(TASK_LIST_METADATA_PATH + '/' + taskList['$key']);
@@ -67,7 +70,8 @@ export class TaskListService {
     });
   }
 
-  public removeTaskList(id: string, userId: string) {
+  public removeTaskList(id: string) {
+    let userId = this.authenticationService.getUserId();
     let instructions = this.generateRemoveTaskListInstructions(id, userId);
     this.angularFire.database.object('').update(instructions);
   }
