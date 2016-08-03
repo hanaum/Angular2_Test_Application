@@ -16,7 +16,7 @@ export class TaskListService {
    */
   public createNewTaskList(uuid: string): string {
     let id = this.getNewTaskListID();
-    let update: Map<any, any> = this.generateCreateTaskListInstructions(id, uuid);
+    let update = this.generateCreateTaskListInstructions(id, uuid);
 
     this.angularFire.database.object('').update(update);
     return id;
@@ -76,10 +76,10 @@ export class TaskListService {
    * Creates an object containing instructions to create a new task list.
    * @param id Task list id.
    * @param userId
-   * @returns {Map<any, any>} Object containing transaction instructions.
+   * @returns {any} Object containing transaction instructions.
    */
-  private generateRemoveTaskListInstructions(id: string, userId: string): Map<any, any> {
-    let update = new Map();
+  private generateRemoveTaskListInstructions(id: string, userId: string): any {
+    let update = {};
     update[TASK_LIST_METADATA_PATH + '/' + id] = null;
     update['task_list/' + id] = null;
     if (userId != null) {
@@ -93,10 +93,10 @@ export class TaskListService {
    * Creates an object containing instructions to create a new task list.
    * @param id Task list id.
    * @param userId
-   * @returns {Map<any, any>} Object containing transaction instructions.
+   * @returns {any} Object containing transaction instructions.
    */
-  private generateCreateTaskListInstructions(id: string, userId: string): Map<any, any> {
-    let update = new Map();
+  private generateCreateTaskListInstructions(id: string, userId: string): any {
+    let update = {};
     update[TASK_LIST_METADATA_PATH + '/' + id] = new TaskList(DEFAULT_TASK_LIST_NAME, userId);
     if (userId != null) {
       update['users/' + userId + '/task_lists/' + id] = true;
