@@ -11,10 +11,7 @@ import {TaskListService} from '../../services/taskList.service';
 export class TaskRemoveButtonComponent {
   @Input() private id: string;
 
-  constructor(
-      private taskListService: TaskListService) {}
+  constructor(private taskListService: TaskListService) {}
 
-  removeList() {
-    this.taskListService.removeTaskList(this.id);
-  }
+  removeList() { this.taskListService.removeTaskList(this.id); }
 }

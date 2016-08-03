@@ -2,8 +2,8 @@ import {Injectable} from '@angular/core';
 import {AngularFire, FirebaseListObservable, FirebaseObjectObservable} from 'angularfire2/angularfire2';  // tslint:disable-line
 import {Observable} from 'rxjs/Rx';
 
+import {AuthenticationService} from './authentication.service';
 import {TaskList} from './taskList';
-import {AuthenticationService} from "./authentication.service";
 
 const DEFAULT_TASK_LIST_NAME: string = 'New List';
 const TASK_LIST_METADATA_PATH: string = 'task_list_metadata';
@@ -11,9 +11,7 @@ const TASK_LIST_METADATA_PATH: string = 'task_list_metadata';
 @Injectable()
 export class TaskListService {
   constructor(
-      private angularFire: AngularFire,
-      private authenticationService: AuthenticationService
-  ) {}
+      private angularFire: AngularFire, private authenticationService: AuthenticationService) {}
 
   /**
    * @returns {string} id of newly created task list.
@@ -61,8 +59,7 @@ export class TaskListService {
   }
 
   // TODO There has to be a better way.
-  public getUserLists():
-      Observable<Observable<FirebaseObjectObservable<any>[]>> {
+  public getUserLists(): Observable<Observable<FirebaseObjectObservable<any>[]>> {
     let userIdObservable: Observable<string> = this.authenticationService.observableUserId;
     return userIdObservable.map((uuid) => {
       return this.angularFire.database.list('users/' + uuid + '/task_lists').map((taskLists) => {

@@ -18,19 +18,17 @@ export class UserListViewComponent implements OnInit {
   private taskListsSubscription: Subscription;
   private taskListsSubscriptionSubscription: Subscription;
 
-  constructor(
-      private taskListService: TaskListService) {}
+  constructor(private taskListService: TaskListService) {}
 
   ngOnInit() {
     this.taskListsSubscriptionSubscription =
-        this.taskListService.getUserLists()
-            .subscribe((taskListsObservable) => {
-              if (this.taskListsSubscription != null) {
-                this.taskListsSubscription.unsubscribe();
-              }
-              this.taskListsSubscription =
-                  taskListsObservable.subscribe((taskLists) => { this.taskLists = taskLists; });
-            });
+        this.taskListService.getUserLists().subscribe((taskListsObservable) => {
+          if (this.taskListsSubscription != null) {
+            this.taskListsSubscription.unsubscribe();
+          }
+          this.taskListsSubscription =
+              taskListsObservable.subscribe((taskLists) => { this.taskLists = taskLists; });
+        });
   }
 
   ngOnDestroy() {
