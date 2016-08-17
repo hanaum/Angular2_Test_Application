@@ -20,6 +20,10 @@ export class AuthenticationService {
 
   constructor(private firebaseAuth: FirebaseAuth) { this.subscribeToAuth(); }
 
+  /**
+   *
+   * @returns {string}
+   */
   public getUserId(): string { return this.authState == null ? null : this.authState.uid; }
 
   public login() { this.firebaseAuth.login(); }
