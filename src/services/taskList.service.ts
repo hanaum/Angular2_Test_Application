@@ -59,6 +59,10 @@ export class TaskListService {
   }
 
   // TODO There has to be a better way.
+  /**
+   *
+   * @returns {Observable<R>}
+   */
   public getUserLists(): Observable<Observable<FirebaseObjectObservable<any>[]>> {
     let userIdObservable: Observable<string> = this.authenticationService.observableUserId;
     return userIdObservable.map((uuid) => {

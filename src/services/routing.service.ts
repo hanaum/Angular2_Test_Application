@@ -20,6 +20,10 @@ export class RoutingService {
     });
   }
 
+  /**
+   *
+   * @param listId
+   */
   public navigateToList(listId: string) {
     let link: string[] = ['/list', listId];
     this.router.navigate(link);
