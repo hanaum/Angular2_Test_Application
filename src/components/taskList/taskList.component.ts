@@ -63,6 +63,9 @@ export class TaskListComponent implements OnInit {
     });
   }
 
+  /**
+   * unsubscribe on destroy
+   */
   ngOnDestroy() {
     this.editableSubscription.unsubscribe();
     this.tasksSubscription.unsubscribe();
